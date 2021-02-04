@@ -1227,15 +1227,60 @@ const whatNote = (string, fret) => {
 };
 console.log(whatNote("E", 0))
 console.log(whatNote("D", 5))
-console.log(whatNote("E", 18))
-console.log(whatNote("A", 1))
-console.log(whatNote("B", 8))
 
+console.log("----------------")
+//Ejercicio Name 99 Bottles of Beer (7 kyu) //No solucionada
+const sing = () => {
+    let lyrics = ""
+    for (let i = 99; i >= 0; i--) {
+        if (i == 1) lyrics += `1 bottle of beer on the wall, 1 bottle of beer. Take one down and pass it around, no more bottles of beer on the wall. \n`
+        else if (i == 2) lyrics += `2 bottles of beer on the wall, 2 bottles of beer. Take one down and pass it around, 1 bottle of beer on the wall. \n`
+        else if (i >= 3) lyrics += `${i} bottles of beer on the wall, ${i} bottles of beer. Take one down and pass it around, ${i - 1} bottles of beer on the wall. \n`
+        else lyrics += `No more bottles of beer on the wall, no more bottles of beer. Go to the store and buy some more, 99 bottles of beer on the wall.`
+    }
+    console.log(lyrics)
+    return [lyrics]
+};
+let song = sing()
+console.log(song)
 
-/*
-Test.assertEquals(whatNote("e", 0), "E")
-Test.assertEquals(whatNote("D", 5), "G")
-Test.assertEquals(whatNote("E", 18), "A#")
-Test.assertEquals(whatNote("A", 1), "A#")
-Test.assertEquals(whatNote("B", 8), "G")
- */
+console.log("--------------------")
+//Ejercicio Name Simple Fun #136: Missing Values (7 kyu)
+function missingValues(arr) {
+    let cantNumeros = arr.reduce((acc, ele) => {
+        if (!acc[ele]) acc[ele] = 0
+        acc[ele]++
+        return acc
+    }, {})
+
+    let once,
+        twice,
+        thrice
+
+    let objEntries = Object.entries(cantNumeros)
+    for (let [num, cant] of objEntries) {
+        if (cant == 1) once = num
+        else if (cant == 2) twice = num
+        else thrice = num
+    }
+    return once * once * twice
+}
+
+function missingValues2(arr) {
+    let cantNumeros = arr.reduce((acc, ele) => {
+        if (!acc[ele]) acc[ele] = 0
+        acc[ele]++
+        return acc
+    }, {})
+
+    let once, twice;
+    for (let x in cantNumeros) {
+        if (cantNumeros[x] == 1) once = x
+        if (cantNumeros[x] == 2) twice = x
+    }
+    return once * once * twice
+
+}
+console.log(missingValues2([96, 56, 24, 46, 75, 46, 75, 21, 46, 21, 75, 96, 56, 96, 56]))
+
+console.log("------------------------")

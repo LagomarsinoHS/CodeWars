@@ -1284,3 +1284,29 @@ function missingValues2(arr) {
 console.log(missingValues2([96, 56, 24, 46, 75, 46, 75, 21, 46, 21, 75, 96, 56, 96, 56]))
 
 console.log("------------------------")
+//Ejercicio Name: Move 10 ( 7 kyu )
+function moveTen(s) {
+    let alphabet = 'abcdefghijklmnopqrstuvwxyz';
+    let move10 = 'klmnopqrstuvwxyzabcdefghij';
+    return s.replace(/[a-z]/g, x => move10[alphabet.indexOf(x)]);
+}
+console.log(moveTen("testcase"))
+
+console.log("------------------------")
+//Ejercicio Name: Hells Kitchen ( 7 kyu )
+const gordon = s => {
+    let word = s.replace(/[a-z]/g, x => {
+        if (x == "a") x = "@"
+        if (/[eiou]/.test(x)) x = "*"
+        return x.toUpperCase()
+    }).split(" ").map(x => x + "!!!!").join(" ")
+    return word
+}
+const gordon2 = s => {
+    return s.toUpperCase()
+        .replace(/[A-Z]+/g, x => x + '!!!!')
+        .replace(/[AEIOU]/g, x => x == "A" ? "@" : "*")
+}
+console.log(gordon2('What feck damn cake'))
+
+console.log("------------------------")

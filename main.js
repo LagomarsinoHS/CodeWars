@@ -1331,4 +1331,4 @@ console.log(bears2(7, '8j8mBliB8gimjB8B8jlB'))
 console.log(bears2(3, '88Bifk8hB8BB8BBBB888chl8BhBfd'))
 
 console.log("------------------------")
-//Ejercicio Name:
+//Ejercicio Name: te

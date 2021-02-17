@@ -1331,4 +1331,6 @@ console.log(bears2(7, '8j8mBliB8gimjB8B8jlB'))
 console.log(bears2(3, '88Bifk8hB8BB8BBBB888chl8BhBfd'))
 
 console.log("------------------------")
-//Ejercicio Name: tes
+//Ejercicio Name: Beginner - Reduce but Grow ( 8 kyu)
+const grow =(x)=>x.reduce((acc,ele)=>acc*ele)
+console.log(grow([1, 2, 3]))

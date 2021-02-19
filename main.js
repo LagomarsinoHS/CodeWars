@@ -1332,5 +1332,38 @@ console.log(bears2(3, '88Bifk8hB8BB8BBBB888chl8BhBfd'))
 
 console.log("------------------------")
 //Ejercicio Name: Beginner - Reduce but Grow ( 8 kyu)
-const grow =(x)=>x.reduce((acc,ele)=>acc*ele)
+const grow = (x) => x.reduce((acc, ele) => acc * ele)
 console.log(grow([1, 2, 3]))
+
+console.log("------------------------")
+//Ejercico name: Spoonerize Me (7 kyu)
+function spoonerize(words) {
+    let [palA, palB] = words.split(" ")
+    let flag = palA[0]
+    palA = palA.replace(palA[0], palB[0])
+    palB = palB.replace(palB[0], flag)
+    return palA + " " + palB
+}
+function spoonerize2(words) {
+    let [palA, palB] = words.split(" ")
+    return [palB[0] + palA.slice(1), palA[0] + palB.slice(1)].join(" ")
+}
+console.log(spoonerize2("nit picking"))
+
+console.log("------------------------")
+//Ejercicio name: Noonerize Me (7 kyu)
+function noonerize(numbers) {
+    //if (numbers.some(x => typeof x !== "number")) return "Invalid Array"
+    if (numbers.some(isNaN)) return "Invalid Array"
+    console.log(numbers[1].toString().slice(0))
+    let res = [numbers[1].toString()[0] + numbers[0].toString().slice(1), numbers[0].toString()[0] + numbers[1].toString().slice(1)]
+    console.log(res)
+    return Math.abs((parseInt(res[1]) - parseInt(res[0])))
+}
+function noonerize2(numbers) {
+    let [num1, num2] = numbers.map(String);
+    [num1, num2] = [num2[0] + num1.slice(1), num1[0] + num2.slice(1)];
+    return num1 && num2 ? Math.abs(num1 - num2) : 'invalid array';
+}
+console.log(noonerize2([12, 34]))
+

@@ -1367,3 +1367,15 @@ function noonerize2(numbers) {
 }
 console.log(noonerize2([12, 34]))
 
+console.log("-----------------------")
+//Ejercicio Name: Double Trouble (7 kyu)
+function trouble(x, t) {
+    for (let i = 0; i < x.length; i++) {
+        if (x[i] + x[i + 1] === t) {
+            x.splice(i + 1, 1);
+            i--;
+        }
+    }
+    return x;
+}
+console.log(trouble([1, 3, 5, 6, 7, 4, 3], 7))

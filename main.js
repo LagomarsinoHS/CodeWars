@@ -1384,15 +1384,13 @@ console.log("-----------------")
 //Ejercicio Name: Chuck Norris I - Push Ups (7 kyu)
 function chuckPushUps(string) {
     const validador = str => {
-        let res = str.replace(/[A-z]/g, "")
+        let res = str.replace(/[A-z|2-9]/g, "")
         return parseInt(res, 2) ? parseInt(res, 2) : res
     }
     if (typeof string !== "string" || string.length == 0) return "FAIL!!"
     if (!string.split(" ").some(x => /\d/.test(x))) return "CHUCK SMASH!!"
     let arrNum = string.split(" ").map(x => validador(x)).filter(Number)
     return Math.max(...arrNum)
-
 }
 console.log(chuckPushUps('1000 "Did you kick someone in the face today?" 1001 1010 "Will I be making dinner then?!" 1011 110'))
 console.log(chuckPushUps("5gnEI2U2Ko2xaDS10103wGZwkqQ9QfdfHJlsOkRvYUuy2110GEBUyUPJDjgdFfGZ10000G1DyripG8cXOzcN6rFl100"))
-console.log("5gnEI2U2Ko2xaDS10103wGZwkqQ9QfdfHJlsOkRvYUuy2110GEBUyUPJDjgdFfGZ10000G1DyripG8cXOzcN6rFl100".replace(/[A-z]/g, ""))

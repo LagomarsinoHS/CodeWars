@@ -1404,3 +1404,17 @@ const onePunch = (items) => {
 console.log(onePunch("Friend Beer Beard Monkey Laptop"))
 console.log(onePunch("ztXiEIDFhXQgWejZwWHgzCpGVpfLQnFUoTxVGrOinwPYSLUqwFTndkaQzhsFGefHHSjIgzSbDBaNohUqTvPGOvZToXJrwxtwchaMjPpgiET"))
 
+console.log("---------------")
+//Ejercicio name: Chuck Norris III - Cage Match (7 kyu)
+function headSmash(array) {
+    if (array.some(x => typeof x == "number")) return "This isn't the gym!!"
+    if (!array.length || array.some(x => !x.length)) return "Gym is empty"
+    return array.map((x) => x.replace(/O/g, " "))
+}
+console.log(headSmash([
+    '*****************************************',
+    '***********   _O_   *   _O_   ***********',
+    '**  _O_   *  /(.)J  *  /(.)J  *   _O_  **',
+    '** /(.)J  *  _| |_  *  _( )_  *  /(.)J **',
+    '** _( )_  *********************  _( )_ **',
+    '******************* X ******************']))

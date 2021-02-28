@@ -1407,8 +1407,8 @@ console.log(onePunch("ztXiEIDFhXQgWejZwWHgzCpGVpfLQnFUoTxVGrOinwPYSLUqwFTndkaQzh
 console.log("---------------")
 //Ejercicio name: Chuck Norris III - Cage Match (7 kyu)
 function headSmash(array) {
-    if (array.some(x => typeof x == "number")) return "This isn't the gym!!"
-    if (!array.length || array.some(x => !x.length)) return "Gym is empty"
+    if (array.length === 0) return "Gym is empty"
+    if (typeof array !== 'object' || array === null) return "This isn't the gym!!"
     return array.map((x) => x.replace(/O/g, " "))
 }
 console.log(headSmash([
@@ -1418,3 +1418,14 @@ console.log(headSmash([
     '** /(.)J  *  _| |_  *  _( )_  *  /(.)J **',
     '** _( )_  *********************  _( )_ **',
     '******************* X ******************']))
+
+console.log("----------------------------")
+//Ejercicio Name: Chuck Norris IV - Bearded Fist (7 kyu)
+function fistBeard(arr) {
+    return arr.reduce((acc, ele) => {
+        ele.forEach(x => acc += String.fromCharCode(x))
+        return acc
+    }, "")
+}
+console.log(fistBeard([[78], [117, 110, 99], [104, 117], [107, 115]]))//'Nunchuks'
+

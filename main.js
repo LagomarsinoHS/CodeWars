@@ -1429,3 +1429,9 @@ function fistBeard(arr) {
 }
 console.log(fistBeard([[78], [117, 110, 99], [104, 117], [107, 115]]))//'Nunchuks'
 
+console.log("--------------------")
+//Ejercicio name: Chuck Norris VI - Shopping with Chuck (7 kyu)
+function price(start, soil, age) {
+    if (typeof start !== "number" || typeof soil !== "string" || typeof age !== number) return "Chuck is bottomless!"
+    
+}

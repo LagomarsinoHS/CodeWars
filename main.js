@@ -1469,4 +1469,30 @@ function to_nato(words) {
 }
 console.log(to_nato("If, you can read?"))//India Foxtrot Yankee Oscar Uniform Charlie Alfa November Romeo Echo Alfa Delta
 
+console.log("---------------------")
+//Ejercicio name: Printer Errors (7 kyu)
+function printerError(s) {
+    let val = 0;
+    s.split("").forEach(element => !/[a-m]/g.test(element) ? val++ : "");
+    return `${val}/${s.length}`
+}
+console.log(printerError("aaabbbbhaijjjm"))
+console.log(printerError("aaaxbbbbyyhwawiwjjjwwm"))
 
+console.log("---------------------")
+//Ejercicio name: Sum of Cubes (7 kyu)
+function sumCubes(n) {
+    let res = 0
+    for (let i = 1; i <= n; i++) {
+        res += Math.pow(i, 3)
+    }
+    return res
+}
+console.log(sumCubes(2))
+
+console.log("--------------------")
+//Ejercicio Name: Reverse the bits in an integer (7 kyu)
+function reverseBits(n) {
+    return parseInt([...n.toString(2)].reverse().join(""), 2)
+}
+console.log(reverseBits(417))

@@ -1498,3 +1498,54 @@ function reverseBits(n) {
 console.log(reverseBits(417))
 
 console.log("-------------");
+//Ejercicio Name: Twice as old (8 kyu)
+function twiceAsOld(dadYearsOld, sonYearsOld) {
+    let res;
+    for (let i = 0; i < 100; i++) {
+        if (dadYearsOld - i == sonYearsOld * 2) res = i
+        else if (dadYearsOld + i == sonYearsOld * 2) res = i
+    }
+    return res
+}
+console.log(twiceAsOld(36, 7))
+
+console.log("----------------")
+//Ejercicio name: Holiday II - Plane Seating (7 kyu)
+function planeSeat(a) {
+    let num = []
+    let letter = []
+    let res = ""
+    for (let i = 0; i < a.length; i++) {
+        if (a[i] >= 0) num.push(a[i])
+        else letter.push(a[i])
+    }
+    num = num.join("")
+    if (num > 60 || /I|J/i.test(letter)) return "No seat!!"
+
+    if (num <= 20) res += "Front-"
+    else if (num < 40) res += "Middle-"
+    else res += "Back-"
+
+    if (/[A-C]/i.test(letter)) res += "Left"
+    else if (/[D-F]/i.test(letter)) res += "Middle"
+    else res += "Right"
+    return res
+}
+function planeSeat2(a) {
+    let num = parseInt(a)
+    let letter = a.slice(-1)
+    if (num > 60 || /[IJ]/i.test(letter)) return "no Seat!!"
+    return `${num <= 20 ? "Front-" : num < 40 ? "Middle-" : "Back-"}${letter <= "C" ? "Left" : letter <= "F" ? "Middle" : "Right"}`
+
+}
+
+console.log(planeSeat2('2B')) //Front-Left
+console.log(planeSeat2('20B')) //Front-Left
+console.log(planeSeat2('58I')) //No Seat!!
+console.log(planeSeat2('60D')) //'Back-Middle
+console.log(planeSeat2('17K')) //Front-Right
+
+console.log("------------------------")
+
+
+

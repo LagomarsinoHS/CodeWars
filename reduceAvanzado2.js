@@ -1,3 +1,5 @@
+//Reduce avanzado
+
 const motors = [
     { model: "r8", cylinder: 2 },
     { model: "r5", cylinder: 4 },

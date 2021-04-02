@@ -21,14 +21,19 @@ let cars ={
     ]
 }
 */
-let newCars = cars.reduce((acc, ele) => {
-    acc[ele.make] ? acc[ele.make].push({ "model": ele.model, "year": ele.year }) : acc[ele.make] = []
+/* let newCars = cars.reduce((acc, ele) => {
+    if (!acc[ele.make]) acc[ele.make] = []
+    acc[ele.make].push({ "model": ele.model, "year": ele.year })
     return acc
-}, [])
-/* let newCars = cars.reduce((acc, ele) => ({
-    ...acc,
-    acc[ele.make]? acc[ele.make].push({ "model": ele.model, "year": ele.year }) : acc[ele.make] = []
+}, []) */
 
-}), []) */
+
+let newCars = cars.reduce((acc, ele) =>({
+    ...acc,
+    [ele.make]: acc.hasOwnProperty(ele.make)
+        ? acc[ele.make].concat({ "model": ele.model, "year": ele.year })
+        : acc[ele.make] = [{ "model": ele.model, "year": ele.year }]
+}), [])
+
 
 console.log(newCars)

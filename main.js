@@ -1547,6 +1547,19 @@ console.log(planeSeat2('17K')) //Front-Right
 
 console.log("------------------------")
 
-
-
+//Ejercicio Name: Harvest Festival (7 kyu)
+function plant(seed, water, fert, temp) {
+    console.log(seed, water, fert, temp)
+    let res = ""
+    if (temp < 20 || temp > 30) {
+        console.log("entre")
+        return res += ("-".repeat(water) + "".repeat(fert)).repeat(water) + seed
+    }
+    console.log("sali")
+    return res += ("-".repeat(water) + seed.repeat(fert)).repeat(water)
+}
+//console.log(plant("@", 3, 3, 25))
+console.log(plant("#", 10, 2, 15))
+// ----------------------------------------------------------------------------------------------------#
+// ----------------------------------------------------------------------------------------------------#
 

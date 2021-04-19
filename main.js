@@ -1560,6 +1560,99 @@ function plant(seed, water, fert, temp) {
 }
 //console.log(plant("@", 3, 3, 25))
 console.log(plant("#", 10, 2, 15))
-// ----------------------------------------------------------------------------------------------------#
-// ----------------------------------------------------------------------------------------------------#
+
+console.log("------------------------")
+//Ejercicio Name: Numbers to letters (7 kyu)
+function switcher(x) {
+    let letters = {
+        a: 26, b: 25, c: 24, d: 23, e: 22, f: 21, g: 20, h: 19, i: 18,
+        j: 17, k: 16, l: 15, m: 14, n: 13, o: 12, p: 11, q: 10, r: 9, s: 8, t: 7, u: 6, v: 5, w: 4, x: 3, y: 2, z: 1,
+        "!": 27, "?": 28, " ": 29
+    }
+    return x.map(num => {
+        for (let key in letters) {
+            const value = letters[key]
+            if (num == value) {
+                return num = key
+            }
+        }
+    }).join("")
+}
+const switcher2 = (x) => {
+    let alpha = " zyxwvutsrqponmlkjihgfedcba!? "
+    return x.map(num => alpha[num]).join("")
+}
+
+//console.log(switcher(['24', '12', '23', '22', '4', '26', '9', '8']))
+console.log(switcher2(['25', '7', '8', '4', '14', '23', '8', '25', '23', '29', '16', '16', '4']))//'btswmdsbd kkw
+
+console.log("-----------------------")
+//Ejercicio Name: Which are in? (6 kyu)
+function inArray(array1, array2) {
+    let res = []
+    array2.forEach(word => {
+        array1.forEach(w => {
+            word.includes(w) ? res.push(w) : ""
+        })
+    })
+    res = [...new Set(res)]
+    return res.sort()
+}
+const inArray2 = (arr1, arr2) => {
+    return [...new Set(arr2.reduce((acc, ele) => {
+        arr1.forEach(wd => {
+            ele.includes(wd) ? acc.push(wd) : ""
+        })
+        return acc
+    }, []))].sort()
+}
+const inArray3 = (arr1, arr2) => {
+    return arr1.filter(whole => (arr2.join(" ").includes(whole))).sort()
+}
+console.log(inArray3(["arp", "live", "strong"], ["lively", "alive", "harp", "sharp", "armstrong"]))
+
+console.log("---------------------------")
+//
+function toTime(seconds) {
+    let hora = Math.floor(seconds / 3600)
+    let minutos = Math.floor((seconds % 3600) / 60);
+    return `${hora} hour(s) and ${minutos} minute(s)`;
+}
+console.log(toTime(3500))
+
+console.log("-------------------------")
+//Build tower (6 kyu)
+function towerBuilder(nFloors) {
+    if (!nFloors) return []
+    let tree = [], cont = 1
+    for (let i = 1; i <= nFloors; i++) {
+        let str = "*".repeat(cont)
+        cont += 2
+        tree.push(str)
+    }
+    let largo = tree[tree.length - 1].length
+
+    let treeFixed = tree.map(floorActual => {
+        if (floorActual.length == largo) return floorActual
+        let floorLength = largo - floorActual.length
+        console.log(floorActual.length, floorLength)
+
+        for (let i = 0; i < floorLength; i++) {
+            if (i % 2 == 0) floorActual = ` ${floorActual}`
+            else floorActual = `${floorActual} `
+        }
+        return floorActual
+    })
+    return treeFixed
+}
+const towerBuilder2 = nFloors => {
+    let tower = [];
+    for (let i = 1; i <= nFloors; i++) {
+        const spaces = " ".repeat(nFloors - i)
+        const x = "*".repeat((i * 2) - 1)
+        tower.push(spaces + x + spaces);
+    }
+    return tower;
+}
+console.log(towerBuilder2(3))
 

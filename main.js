@@ -1656,3 +1656,90 @@ const towerBuilder2 = nFloors => {
 }
 console.log(towerBuilder2(3))
 
+console.log("-----------------------")
+//Ejercicio Name: Coding Meetup #1 - Higher-Order Functions Series - Count the number of JavaScript developers coming from Europe (7 kyu)
+function countDevelopers(list) {
+    return list.filter(({ continent, language }) => continent === "Europe" && language === "JavaScript").length
+}
+let list1 = [
+    { firstName: 'Noah', lastName: 'M.', country: 'Switzerland', continent: 'Europe', age: 19, language: 'JavaScript' },
+    { firstName: 'Maia', lastName: 'S.', country: 'Tahiti', continent: 'Oceania', age: 28, language: 'JavaScript' },
+    { firstName: 'Shufen', lastName: 'L.', country: 'Taiwan', continent: 'Asia', age: 35, language: 'HTML' },
+    { firstName: 'Sumayah', lastName: 'M.', country: 'Tajikistan', continent: 'Asia', age: 30, language: 'CSS' }
+]
+console.log(countDevelopers(list1))
+
+console.log("-----------")
+//Ejercicio Name:Shopping Calculation (6 kyu)
+function shoppingCalculation(input) {
+    let fruits = input.reduce((acc, ele) => {
+        if (ele.includes("is")) {
+            let [fruta, , valor] = ele.split(" ")
+            acc[fruta.toLowerCase()] = valor.replace(/\D/gi, "")
+        }
+        return acc
+    }, {})
+
+    let persons = input.reduce((acc, ele) => {
+        if (ele.includes("has")) {
+            let [nombre, , dinero] = ele.split(" ")
+            if (!acc.hasOwnProperty(nombre)) acc[nombre] = {}
+            acc[nombre] = { dinero: dinero.replace(/\D/gi, "") }
+        }
+        return acc
+    }, {})
+
+
+    let compras = {};
+    input.forEach(ele => {
+        if (ele.includes("buys")) {
+            let [name, , qty, product] = ele.split(" ")
+            if (!compras.hasOwnProperty(name)) compras[name] = []
+            compras[name].push({ qty, product: product.replace(/\W/gi, "") })
+        }
+    })
+
+    let parcial = []
+    for (let nombre in compras) {
+        let personBuy = []
+        compras[nombre].forEach((x) => {
+            let qty = x.qty
+            let prod = x.product[x.product.length - 1] == "s" ? x.product.slice(0, -1) : x.product
+            personBuy.includes(nombre) ? personBuy.push(prod + " " + qty) : personBuy.push(nombre, prod + " " + qty)
+        })
+        parcial.push(personBuy)
+    }
+    let res = []
+    console.log(fruits)
+    parcial.forEach(per => {
+        let [nombre, ...produ] = per
+        let totalDinero = persons[nombre].dinero
+        let prods = []
+        produ.forEach(sin => {
+            let [fruit, qty] = sin.split(" ")
+            let precioFruta = fruits[fruit]
+            totalDinero -= precioFruta * qty
+            prods.push(qty + " " + fruit)
+        })
+        res.push([nombre, "$" + totalDinero])
+
+        let idxNombre = 0;
+        res.forEach((x, idx) => {
+            if (x.includes(nombre)) {
+                idxNombre = idx
+            }
+        })
+        console.log(idxNombre)
+
+
+    })
+    console.log(res)
+
+
+}
+console.log(shoppingCalculation(["Apple is $5.", "Banana is $7.", "Orange is $2.", "Alice has $26.", "John has $41.",
+    "Alice buys 2 apples.",
+    "John buys 1 banana.",
+    "Alice buys 5 oranges."
+]))
+//output -> [("Alice", "$6", "2 apples, 5 oranges")]

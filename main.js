@@ -60,6 +60,7 @@ function narcissistic(value) {
         return valor == value ? true : false
     }
 }
+console.log("narcissistic")
 console.log(narcissistic(9474));
 
 //Nombre Ejercicio: Highest and Lowest
@@ -70,6 +71,7 @@ function highAndLow(numbers) {
     let result = Math.max(...numero) + " " + Math.min(...numero)
     return result
 }
+console.log("highAndLow")
 console.log(highAndLow("4 5 29 54 4 0 -214 542 -64 1 -3 6 -6"));
 
 //Nombre Ejercicio: Friend or Foe?
@@ -78,6 +80,7 @@ function friend(friends) {
     return friends.filter(friend => friend.length == 4)
 
 }
+console.log("friend")
 console.log(friend(["Ryan", "Kieran", "Mark"]));
 
 //Nombre Ejercicio: Two to One
@@ -92,7 +95,7 @@ function longest(s1, s2) {
     }
     return arrayFinal.sort().join("")
 }
-
+console.log("longest")
 console.log(longest("xyaabbbccccdefww", "xxxxyyyyabklmopq"))
 
 
@@ -107,6 +110,7 @@ function getSum(a, b) {
     }
     return total
 }
+console.log("getSum")
 console.log(getSum(5, 1))
 console.log("-------------")
 //Nombre Ejercicio: Sort the odd (6 kyu)
@@ -120,6 +124,7 @@ function sortArray(array) {
         return e
     })
 }
+console.log("sortArray")
 console.log(sortArray([5, 3, 2, 8, 1, 4])) //[1, 3, 2, 8, 5, 4]
 console.log("------------------------")
 
@@ -133,6 +138,7 @@ function arrayDiff(a, b) {
     }
     return arr
 }
+console.log("arrayDiff")
 console.log(arrayDiff([1, 2, 2, 2, 3], [2])) //[1,3]
 console.log(arrayDiff([-6, -19, -6, 4, 0], [0, -6, -19]))
 
@@ -146,6 +152,7 @@ var uniqueInOrder = function (iterable) {
         return e !== arr[i + 1];
     });
 }
+console.log("uniqueInOrder")
 console.log(uniqueInOrder('AAAABBBCCDAABBB')) //['A','B','C','D','A','B']
 console.log("---------------------")
 
@@ -164,8 +171,10 @@ const getTurkishNumber = (num) => {
         return str
     }
 }
+console.log("getTurkishNumber")
 console.log(getTurkishNumber(16))
 console.log("---------------------------")
+
 //Nombre Ejercicio: Filling an array (part 2)
 const squares = n => {
     let arr = []
@@ -191,8 +200,11 @@ const random = (n, min, max) => {
     }
     return arr
 }
+console.log("Squares")
 console.log(squares(5))
+console.log("Range")
 console.log(range(6, 3, 2))
+console.log("Random")
 console.log(random(4, 5, 10))
 
 console.log("---------------------------")
@@ -203,6 +215,7 @@ function solution(str, ending) {
     //return subString == ending ? true : false
     return str.endsWith(ending) ? true : false
 }
+console.log("solution")
 console.log(solution('abc', 'bc'))
 console.log(solution('abcdfghuyddfs', 'ddfs'))
 
@@ -1743,3 +1756,29 @@ console.log(shoppingCalculation(["Apple is $5.", "Banana is $7.", "Orange is $2.
     "Alice buys 5 oranges."
 ]))
 //output -> [("Alice", "$6", "2 apples, 5 oranges")]
+
+console.log("-----------------")
+//Ejercicio Name: Reverse or rotate? (6 kyu)
+function revrot(str, sz) {
+    const validate = (str) => {
+        return str.split("").map(num => Math.pow(num, 3)).reduce((acc, ele) => acc + ele, 0) % 2 == 0
+    }
+    const rotar = str => str.slice(1) + str.slice(0, 1)
+
+
+    if (!str || sz <= 0 || sz > str.length) return ""
+    let res = ""
+    for (let i = 0; i < str.length; i = i + sz) {
+        let chunk = str.substr(i, sz)
+        if (chunk.length < sz) continue
+        if (validate(chunk)) {
+            let reverse = chunk.split("").reverse().join("")
+            res += reverse
+        } else {
+            res += rotar(chunk)
+        }
+    }
+    return res
+}
+
+console.log(revrot("123456987653", 6))//234561876549

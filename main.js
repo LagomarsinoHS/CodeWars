@@ -241,7 +241,7 @@ function count2(string) {
         return acc
     }, {})
 }
-
+console.log("Count");
 let cadena = "hola como estas, yo bien"
 console.log(count2(cadena))
 
@@ -271,7 +271,7 @@ function createPhoneNumber(numbers) {
         return acc.replace("x", num)
     }, "(xxx) xxx-xxxx")
 }
-
+console.log("Create Phone Number");
 console.log(createPhoneNumber([1, 2, 3, 4, 5, 6, 7, 8, 9, 0]))
 
 console.log("-----------------------")
@@ -285,7 +285,7 @@ function isPangram(string) {
 
     return "abcdefghijklmnopqrstuvwxyz".split("").every(letra => string.includes(letra))
 }
-
+console.log("Is Pangram");
 console.log(isPangram("The quick brown fox jumps over the lazy dog."))
 //console.log(isPangram("ABCD45EFGH,IJK,LMNOPQR56STUVW3XYZ"))
 
@@ -314,6 +314,7 @@ function alphabetPosition2(text) {
         .map(t => letters.indexOf(t) + 1)
         .join(' ');
 }
+console.log("alphabetPosition")
 console.log(alphabetPosition2("The sunset sets at twelve o' clock."))
 
 console.log("------------------------------")
@@ -332,7 +333,7 @@ const findAll = (array, n) => {
     //Ojo con este
     /* array.reduce((pre, val, idx) => val === n ? [...pre, idx] : pre, []); */
 }
-
+console.log("findAll");
 console.log(findAll([6, 9, 3, 4, 3, 82, 11], 3)) //->2,4
 
 console.log("------------------------")
@@ -347,7 +348,7 @@ function duplicateCount(text) {
     }
     return count
 }
-
+console.log("duplicateCount");
 console.log(duplicateCount("aabbcde"))
 
 console.log("----------------")
@@ -362,6 +363,7 @@ const findOdd = (arr) => {
         if (a[item] % 2 == 1) return Number(item)
     }
 }
+console.log("findOdd");
 console.log(findOdd([20, 1, -1, 2, -2, 3, 3, 5, 5, 1, 2, 4, 20, 4, -1, -2, 5]))
 
 console.log("---------------------------")
@@ -377,8 +379,10 @@ const findMissing = (list) => {
         }
     }
 }
+console.log("findMissing");
 console.log(findMissing([1, 3, 5, 9, 11]))
 
+console.log("---------------------------");
 
 function songDecoder(song) {
     let regexp = /wub/gi
@@ -390,6 +394,7 @@ function songDecoder(song) {
         return res.trim()
     }
 }
+console.log("songDecoder");
 console.log(songDecoder("AWUBBWUBC"))
 
 console.log("------------------------")
@@ -411,7 +416,7 @@ String.prototype.camelCase = function () {
         return word.charAt(0).toUpperCase() + word.slice(1);
     }).join("")
 }
-
+console.log("camelCase");
 console.log(" camel case word".camelCase())
 console.log("------------------------------");
 
@@ -445,7 +450,7 @@ function score(dice) {
     total += (50 * cinco)
     return total
 }
-
+console.log("score");
 console.log(score([1, 1, 1, 1, 2]))
 
 let datos = [2, 4, 5, 6].map(e => e = "asd")
@@ -459,7 +464,7 @@ function findOutlier(integers) {
     integers.filter(e => e % 2 == 0 ? par.push(e) : impares.push(e))
     return par.length == 1 ? par[0] : impares[0]
 }
-
+console.log("findOutlier");
 console.log(findOutlier([2, 4, 0, 100, 4, 11, 2602, 36]))
 
 console.log("--------------------------")
@@ -476,7 +481,7 @@ function index(array, n) {
     //return array.length - 1 < n ? -1 : Math.pow(array[n], n)
     //return array[n] **n || -1
 }
-
+console.log("index");
 console.log(index([1, 2, 3, 4], 2))
 
 console.log("----------------------")
@@ -485,9 +490,9 @@ console.log("----------------------")
 function isDivideBy(number, a, b) {
     return number % a == 0 && number % b == 0 ? true : false
 }
-
+console.log("isDivideBy");
 console.log("----------------")
-//Ejercicio Name: Stringing me along ()6 kyu
+//Ejercicio Name: Stringing me along (6 kyu)
 /* 
 function createMessage(str) {
     if (!this.str) this.str = "";
@@ -513,6 +518,7 @@ function middleMe(N, X, Y) {
     str = Y.repeat(N / 2)
     return N % 2 != 0 ? X : str + X + str
 }
+console.log("middleMe");
 console.log(middleMe(19, 'z', '#'))
 
 console.log("---------------------")
@@ -528,6 +534,7 @@ function sumStrings(a, b) {
     }
     return res.join("")
 }
+console.log("sumStrings");
 console.log(sumStrings("123", "456"))
 
 console.log("--------------")
@@ -545,10 +552,10 @@ function pairs2(ar, count = 0) {
     }
     return count
 }
+console.log("pairs");
 console.log(pairs([21, 20, 22, 40, 39, -56, 30, -55, 95, 94]))
-console.log("---------------")
 
-console.log("-------------");
+console.log("---------------")
 //Ejercicio Name: Moving Zeros To The End (5kyu)
 
 const moveZeros = (arr) => {
@@ -561,7 +568,7 @@ const moveZeros = (arr) => {
        return res */
     return arr.filter(e => e !== 0).concat(arr.filter(e => e === 0))
 }
-
+console.log("moveZeros");
 console.log(moveZeros([1, 2, 0, 1, false, true, 0, 1, 0, 3, 0, 1]));
 
 console.log("--------------");
@@ -577,6 +584,7 @@ function scramble(str1, str2) {
     }
     return true
 }
+console.log("scramble");
 console.log(scramble('javsaripts', 'javascript'));
 
 console.log("---------------")
@@ -586,6 +594,7 @@ function rankings(arr) {
     let rank = [...arr].sort((a, b) => b - a)
     return arr.map(e => e = rank.indexOf(e) + 1 + "°")
 }
+console.log("rankings");
 console.log(rankings([3, 4, 1, 2, 5]))
 
 console.log("------------------------");
@@ -610,6 +619,7 @@ function rot13(str) {
         } else return e
     }).join("")
 }
+console.log("rot13");
 console.log(rot13("EBG13 rknzcyr."));// "ROT13 example.";
 
 console.log("-----------------------");
@@ -634,13 +644,15 @@ const findChildren2 = dancingBrigade =>
         .sort((a, b) => a.toLowerCase().localeCompare(b.toLowerCase()) || b.localeCompare(a))
         .join('')
 
+console.log("findChildren");
 console.log(findChildren2("beeeEBb"));
-console.log("-------------------------------")
 
+console.log("-------------------------------")
 //Ejercicio Name: Is he gonna survive? (8 kyu)
 const hero = (bullets, dragons) => {
     return bullets / 2 >= dragons ? true : false
 }
+console.log("hero");
 console.log(hero(10, 5))
 
 console.log("------------------------")
@@ -649,21 +661,21 @@ const solve = (sum, gcd) => {
     if (sum % gcd !== 0) return -1
     return [gcd, sum - gcd]
 }
+console.log("solve");
 console.log(solve(6, 3))
 console.log(solve(8, 2))
 
 console.log("----------");
-
 const solve2 = (str) => {
     console.log(str)
     let str2 = str.replace(/[A-z]/g, "-").split("-")
     return Math.max(...str2)
 }
+console.log("Solve2");
 console.log(solve2("gh12cdy695m1"));
 
 console.log("-------------");
 //Ejercicio Name: Say Me Please Operations (7 kyu)
-
 function sayMeOperations(str) {
     console.log(str);
     let str2 = str.split(" ").map(e => Number(e))
@@ -683,6 +695,7 @@ function sayMeOperations(str) {
     return res.trim().replace(/.$/, "")
 
 }
+console.log("sayMeOperations");
 console.log(sayMeOperations("10 2 5 -3 -15 12"));
 //division, subtraction, multiplication, subtraction"
 
@@ -692,6 +705,7 @@ const validatePIN = (pin) => {
     if (/^\d{4}$|^\d{6}$/.test(pin)) return true
     return false
 }
+console.log("validatePIN");
 console.log(validatePIN("12345"));
 console.log("-------")
 //Ejercicio Name: Two Oldest ages (7 kyu)
@@ -700,6 +714,7 @@ function twoOldestAges(ages) {
     return [ages[ages.length - 2], ages[ages.length - 1]] */
     return ages.sort((a, b) => a - b).slice(-2)
 }
+console.log("twoOldestAges");
 console.log(twoOldestAges([1, 2, 10, 8]))
 console.log("------------")
 
@@ -708,9 +723,8 @@ function DNAStrand(dna) {
     let compl = { A: "T", T: "A", G: "C", C: "G" }
     return [...dna].map(e => compl[e])
 }
+console.log("DNAStrand");
 console.log(DNAStrand("ATTGC"))//TAACG
-
-console.log("-----------------")
 
 console.log("-----------------------");
 //Ejercicio Name: Word values (7kyu)
@@ -721,18 +735,23 @@ const wordValues = (str) => {
     }
     return str.map((val, idx) => (val.match(/\w/g) || []).reduce((pre, val) => pre + VALORES[val], 0) * ++idx)
 }
+console.log("wordValues");
 console.log(wordValues(["abc", "abc abc"]));
+
 console.log("-----------------------");
 //Ejercicio Name: Simple Fun #176: Reverse Letter (7 kyu)
 const reverseLetter = str => {
     return str.match(/[a-z]/gi).reverse().join("")
 }
+console.log("reverseLetter");
 console.log(reverseLetter("ultr53o?n"));
+
 console.log("------------");
 function isInMiddle(seq) {
     let pos = seq.match(/(abc)/)
     return pos
 }
+console.log("isInMiddle");
 console.log(isInMiddle("AAabcBB"));
 console.log(isInMiddle("AabcBBB"));
 
@@ -745,6 +764,7 @@ const summation = function (num) {
     }
     return res
 }
+console.log("summation");
 console.log(summation(6))
 
 console.log("-------------------")
@@ -754,7 +774,9 @@ function generateRange(min, max, step) {
     for (let i = min; i <= max; i = i + step) res.push(i)
     return res
 }
+console.log("generateRange");
 console.log(generateRange(2, 10, 2))
+
 console.log("-------------------------")
 //Ejercicio Name: Leaderboard climbers (6 kyu)
 function leaderboardSort(leaderboard, changes) {
@@ -767,17 +789,19 @@ function leaderboardSort(leaderboard, changes) {
     }
     return leaderboard
 }
+console.log("leaderboardSort");
 console.log(leaderboardSort(['John', 'Brian', 'Jim', 'Dave', 'Fred'], ['Dave +1', 'Fred +4', 'Brian -1']))
 
 console.log("-------------")
-
 //Ejercicio Name: Recycle (7 kyu)
 function recycleMe(recycle) {
     let res = [0, 0, 0]
     recycle.map(e => e > 0 ? res[0]++ : e < 0 ? res[1]++ : res[2]++)
     return res;
 }
+console.log("recycleMe");
 console.log(recycleMe([5, -9, 0, 6, -84, -95, 15]))
+
 console.log("----------------------------------------------------")
 //Ejercicio Name: Sequence convergence (6 kyu)
 function convergence(n) {
@@ -804,6 +828,7 @@ function convergence(n) {
     console.log(res)
     return res.length
 }
+console.log("convergence");
 console.log(convergence(500))
 
 console.log("-----------------")
@@ -830,11 +855,13 @@ function pigIt2(str) {
         })
         .join(" ")
 }
+console.log("pigIt");
 console.log(pigIt2('Pig latin is cool !'))
 
 console.log("--------------------")
 //Ejercicio Name: Invert values (8 kyu)
 const invert = array => array.map(e => -e)
+console.log("invert");
 console.log(invert([1, 2, 3, 4, 5]))
 
 console.log("--------------------")
@@ -847,6 +874,7 @@ function dative(word) {
 function dative2(word) {
     return /[eéiíöőüű]/.test(word) ? word + "nek" : word + "nak"
 }
+console.log("dative");
 console.log(dative2("szék"))
 
 console.log("--------------------")
@@ -862,13 +890,16 @@ function getStrings(city) {
     }
     return res.join(",")
 }
+console.log("getStrings");
 console.log(getStrings("Las Vegas"))
+
 console.log("------------------------")
 //Ejercicio Name: Mirror, mirror, on the wall... (7 kyu)
 function mirror(data) {
     let sort = data.sort((a, b) => a - b)
     return [...sort, ...sort.reverse().slice(1)]
 }
+console.log("mirror");
 console.log(mirror([1])) //[1, 2, 3, 2, 1]
 
 console.log("--------------------")
@@ -876,6 +907,7 @@ console.log("--------------------")
 function litres(time) {
     return Math.floor(time * 0.5)
 }
+console.log("litres");
 console.log(litres(3))
 
 console.log("---------------------------")
@@ -898,6 +930,7 @@ function lifePathNumber(dateOfBirth) {
     console.log(ano, mes, dia)
     return reducir(reducir(ano) + reducir(mes) + reducir(dia) + "")
 }
+console.log("lifePathNumber");
 console.log(lifePathNumber("1879-03-14"))
 
 console.log("----------------")
@@ -905,6 +938,7 @@ console.log("----------------")
 function setAlarm(employed, vacation) {
     return employed && !vacation
 }
+console.log("setAlarm");
 console.log(setAlarm(true, false))
 
 console.log("------------------------")
@@ -916,6 +950,7 @@ function findShort(s) {
     }, Infinity)
     //return Math.min(...s.split(" ").map(x=>x.length))
 }
+console.log("findShort");
 console.log(findShort("bitcoin take over the world maybe who knows perhaps"))
 
 console.log("-------------")
@@ -926,6 +961,7 @@ function unluckyDays(year) {
     }
     return unlucky
 }
+console.log("unluckyDays");
 console.log(unluckyDays(2015))
 
 console.log("---------------------")
@@ -941,6 +977,7 @@ function repeats(arr) {
 function repeats2(arr) {
     return arr.filter(num => arr.indexOf(num) === arr.lastIndexOf(num)).reduce((acc, ele) => acc + ele)
 };
+console.log("repeats");
 console.log(repeats2([4, 5, 7, 5, 4, 8]))
 
 console.log("---------------")
@@ -953,14 +990,15 @@ function stringTask(s) {
 function stringTask2(s) {
     return s.toLowerCase().replace(/[aeiouy]/g, "").replace(/./g, v => "." + v)
 }
+console.log("stringTask");
 console.log(stringTask("Codewars"))
 
 console.log("---------------------------")
-
 //Ejercicio Name: Evens and Odds (7 kyu)
 function evensAndOdds(num) {
     return num.toString(num % 2 ? 2 : 16)
 }
+console.log("evensAndOdds");
 console.log(evensAndOdds(1015415))
 
 console.log("--------------")
@@ -972,6 +1010,7 @@ function tidyNumber(n) {
     }
     return true
 }
+console.log("tidyNumber");
 console.log(tidyNumber(1))
 
 console.log("-----------------")
@@ -982,6 +1021,7 @@ function strong(n) {
     let a = nArr.reduce((acc, ele) => acc += fact(ele), 0)
     return a == n ? "STRONG!!!!" : "Not Strong !!"
 }
+console.log("strong");
 console.log(strong(145))
 
 console.log("-------------------")
@@ -990,6 +1030,7 @@ function disariumNumber(n) {
     let arrN = [...n.toString()]
     return arrN.map((e, i, arr) => Math.pow(e, i + 1)).reduce((acc, ele) => acc + ele) == n ? "Disarium !!" : "Not !!"
 }
+console.log("disariumNumber");
 console.log(disariumNumber(89))
 
 console.log("------------------")
@@ -1009,6 +1050,7 @@ function balancedNum(number) {
     right = [...right].map(Number).reduce((acc, ele) => acc + ele, 0)
     return left === right ? "Balanced" : "Not Balanced"
 }
+console.log("balancedNum");
 console.log(balancedNum(7))
 
 console.log("---------------------")
@@ -1016,6 +1058,7 @@ console.log("---------------------")
 function specialNumber(n) {
     return [...n.toString()].every(x => /[0-5]/.test(x)) == true ? "Special!!" : "NOT!!"
 }
+console.log("specialNumber");
 console.log(specialNumber(5))
 
 console.log("-----------------------")
@@ -1028,6 +1071,7 @@ function automorphic(n) {
 function automorphic2(n) {
     return (n * n).toString().endsWith(n) ? "Automorphic" : "Not!!"
 }
+console.log("automorphic");
 console.log(automorphic2(625))
 
 console.log("-------------------")
@@ -1049,6 +1093,7 @@ function addArrays(array1, array2) {
     console.log(res)
     return res.map(Number)
 }
+console.log("addArrays");
 console.log(addArrays([], []))
 
 console.log("---------------------")
@@ -1064,6 +1109,7 @@ function consecutive(arr) {
     }
     return cont
 }
+console.log("consecutive");
 console.log(consecutive([4, 8, 6]))
 
 console.log("--------------")
@@ -1076,6 +1122,7 @@ function rowWeights(array) {
     }
     return res
 }
+console.log("rowWeights");
 console.log(rowWeights([80, 150]))
 
 console.log("------------------")
@@ -1086,6 +1133,7 @@ function modifiedSum(a, n) {
 function modifiedSum2(a, n) {
     return a.reduce((acc, ele) => acc + ele ** n - ele, 0)
 }
+console.log("modifiedSum");
 console.log(modifiedSum2([1, 2, 3], 3))
 
 console.log("----------------------")
@@ -1099,6 +1147,7 @@ function meeting(s) {
     }).join('');
 
 }
+console.log("meeting");
 console.log(meeting("Fred:Corwill;Wilfred:Corwill;Barney:Tornbull;Betty:Tornbull;Bjon:Tornbull;Raphael:Corwill;Alfred:Corwill"))
 
 console.log("---------------")
@@ -1125,6 +1174,7 @@ function dominantArray2(arr) {
 }
 //Itera por cada numero, si el numero iterando es mayor a todo el resto de ellos, lo devuelve (esto pasa por el array.slice que entrega todo el array menos el de idx)
 const dominantArray3 = arr => arr.filter((num, idx, array) => num > Math.max(...array.slice(idx + 1)))
+console.log("dominantArray");
 console.log(dominantArray3([16, 17, 14, 3, 14, 5, 2]));
 
 console.log("--------------")
@@ -1146,6 +1196,7 @@ function sharedBits(a, b) {
     }
     return res
 }
+console.log("sharedBits");
 console.log(sharedBits(43, 77)) //44,77
 
 console.log("---------------------")
@@ -1160,6 +1211,7 @@ const quarterOf = (month) => {
             break;
     }
 }
+console.log("quarterOf");
 console.log(quarterOf(3))
 
 console.log("-----------------")
@@ -1180,6 +1232,7 @@ const uniqueString2 = (a, b) => {
 const uniqueString3 = (a, b) => [...a, ...b].reduce((acc, cur) => {
     return acc += a.includes(cur) && b.includes(cur) ? "" : cur
 }, "")
+console.log("uniqueString");
 console.log(uniqueString3("xyab", "xzca"))
 
 console.log("-------------")
@@ -1191,6 +1244,7 @@ const getVowels = str => {
     console.log(str.match(/[aeiou]/g))
     return (str.match(/[aeiou]/g) || []).length
 }
+console.log("getVowels");
 console.log(getVowels("abracadabra"))
 
 console.log("---------------");
@@ -1221,7 +1275,7 @@ function deleteNth2(arr, x) {
         return obj[number] <= x
     })
 }
-
+console.log("deleteNth");
 console.log(deleteNth([4, 35, 35, 47, 4, 35, 4, 15, 38, 47, 34, 4, 4, 15, 47, 38, 4, 49, 4, 4, 49, 15, 38, 15, 4, 4, 15, 15, 4, 4, 47, 47, 44, 4, 47, 47, 4, 4, 34], 1));
 
 console.log("------------")
@@ -1230,6 +1284,7 @@ function fireFight(s) {
     //return s.replace(/[F-f]ire/g, v => v="~~")
     return s.replace(/[F-f]ire/g, "~~")
 }
+console.log("fireFight");
 console.log(fireFight("Boat Rudder Mast Boat Hull Water fire Boat Deck Hull Fire Propeller Deck Fire Deck Boat Mast"))
 
 console.log("------------------")
@@ -1238,6 +1293,7 @@ const whatNote = (string, fret) => {
     const letras = ["A#", "B", "C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A"]
     return letras[(letras.indexOf(string.toUpperCase()) + fret) % 12]
 };
+console.log("whatNote");
 console.log(whatNote("E", 0))
 console.log(whatNote("D", 5))
 
@@ -1254,8 +1310,8 @@ const sing = () => {
     console.log(lyrics)
     return [lyrics]
 };
-let song = sing()
-console.log(song)
+console.log("sing");
+console.log(sing())
 
 console.log("--------------------")
 //Ejercicio Name Simple Fun #136: Missing Values (7 kyu)
@@ -1294,6 +1350,7 @@ function missingValues2(arr) {
     return once * once * twice
 
 }
+console.log("missingValues");
 console.log(missingValues2([96, 56, 24, 46, 75, 46, 75, 21, 46, 21, 75, 96, 56, 96, 56]))
 
 console.log("------------------------")
@@ -1303,6 +1360,7 @@ function moveTen(s) {
     let move10 = 'klmnopqrstuvwxyzabcdefghij';
     return s.replace(/[a-z]/g, x => move10[alphabet.indexOf(x)]);
 }
+console.log("moveTen");
 console.log(moveTen("testcase"))
 
 console.log("------------------------")
@@ -1320,6 +1378,7 @@ const gordon2 = s => {
         .replace(/[A-Z]+/g, x => x + '!!!!')
         .replace(/[AEIOU]/g, x => x == "A" ? "@" : "*")
 }
+console.log("gordon");
 console.log(gordon2('What feck damn cake'))
 
 console.log("------------------------")
@@ -1340,12 +1399,14 @@ const bears2 = (x, s) => {
     var pairs = s.match(/(8B)|(B8)/g);
     return [pairs.join(""), pairs.length >= x];
 }
+console.log("bears");
 console.log(bears2(7, '8j8mBliB8gimjB8B8jlB'))
 console.log(bears2(3, '88Bifk8hB8BB8BBBB888chl8BhBfd'))
 
 console.log("------------------------")
 //Ejercicio Name: Beginner - Reduce but Grow ( 8 kyu)
 const grow = (x) => x.reduce((acc, ele) => acc * ele)
+console.log("grow");
 console.log(grow([1, 2, 3]))
 
 console.log("------------------------")
@@ -1361,6 +1422,7 @@ function spoonerize2(words) {
     let [palA, palB] = words.split(" ")
     return [palB[0] + palA.slice(1), palA[0] + palB.slice(1)].join(" ")
 }
+console.log("spoonerize");
 console.log(spoonerize2("nit picking"))
 
 console.log("------------------------")
@@ -1378,6 +1440,7 @@ function noonerize2(numbers) {
     [num1, num2] = [num2[0] + num1.slice(1), num1[0] + num2.slice(1)];
     return num1 && num2 ? Math.abs(num1 - num2) : 'invalid array';
 }
+console.log("noonerize");
 console.log(noonerize2([12, 34]))
 
 console.log("-----------------------")
@@ -1391,6 +1454,7 @@ function trouble(x, t) {
     }
     return x;
 }
+console.log("trouble");
 console.log(trouble([1, 3, 5, 6, 7, 4, 3], 7))
 
 console.log("-----------------")
@@ -1405,6 +1469,7 @@ function chuckPushUps(string) {
     let arrNum = string.split(" ").map(x => validador(x)).filter(Number)
     return Math.max(...arrNum)
 }
+console.log("chuckPushUps");
 console.log(chuckPushUps('1000 "Did you kick someone in the face today?" 1001 1010 "Will I be making dinner then?!" 1011 110'))
 console.log(chuckPushUps("5gnEI2U2Ko2xaDS10103wGZwkqQ9QfdfHJlsOkRvYUuy2110GEBUyUPJDjgdFfGZ10000G1DyripG8cXOzcN6rFl100"))
 
@@ -1414,6 +1479,7 @@ const onePunch = (items) => {
     console.log(items)
     return typeof items === "string" && items ? items.split(" ").map(x => x.replace(/[ae]/g, "")).sort().join(" ") : "Broken!"
 }
+console.log("onePunch");
 console.log(onePunch("Friend Beer Beard Monkey Laptop"))
 console.log(onePunch("ztXiEIDFhXQgWejZwWHgzCpGVpfLQnFUoTxVGrOinwPYSLUqwFTndkaQzhsFGefHHSjIgzSbDBaNohUqTvPGOvZToXJrwxtwchaMjPpgiET"))
 
@@ -1424,6 +1490,7 @@ function headSmash(array) {
     if (typeof array !== 'object' || array === null) return "This isn't the gym!!"
     return array.map((x) => x.replace(/O/g, " "))
 }
+console.log("headSmash");
 console.log(headSmash([
     '*****************************************',
     '***********   _O_   *   _O_   ***********',
@@ -1440,6 +1507,7 @@ function fistBeard(arr) {
         return acc
     }, "")
 }
+console.log("fistBeard");
 console.log(fistBeard([[78], [117, 110, 99], [104, 117], [107, 115]]))//'Nunchuks'
 
 console.log("--------------------")
@@ -1468,6 +1536,7 @@ function likes2(names) {
     //Lo mismo pero mejor
     return templates[idx].replace(/{name}|{left}/g, x => x === "{name}" ? names.shift() : names.length)
 }
+console.log("likes");
 console.log(likes2(["Peter", "Adrian", "Alex", "Berto"]))
 
 console.log("---------------------")
@@ -1480,6 +1549,7 @@ function to_nato(words) {
     }
     return [...words.replace(/\s/g, "")].map(x => x = code[x.toUpperCase()] || x).join(" ")
 }
+console.log("to_nato");
 console.log(to_nato("If, you can read?"))//India Foxtrot Yankee Oscar Uniform Charlie Alfa November Romeo Echo Alfa Delta
 
 console.log("---------------------")
@@ -1489,6 +1559,7 @@ function printerError(s) {
     s.split("").forEach(element => !/[a-m]/g.test(element) ? val++ : "");
     return `${val}/${s.length}`
 }
+console.log("printerError");
 console.log(printerError("aaabbbbhaijjjm"))
 console.log(printerError("aaaxbbbbyyhwawiwjjjwwm"))
 
@@ -1501,6 +1572,7 @@ function sumCubes(n) {
     }
     return res
 }
+console.log("sumCubes");
 console.log(sumCubes(2))
 
 console.log("--------------------")
@@ -1508,6 +1580,7 @@ console.log("--------------------")
 function reverseBits(n) {
     return parseInt([...n.toString(2)].reverse().join(""), 2)
 }
+console.log("reverseBits");
 console.log(reverseBits(417))
 
 console.log("-------------");
@@ -1520,6 +1593,7 @@ function twiceAsOld(dadYearsOld, sonYearsOld) {
     }
     return res
 }
+console.log("twiceAsOld");
 console.log(twiceAsOld(36, 7))
 
 console.log("----------------")
@@ -1551,7 +1625,7 @@ function planeSeat2(a) {
     return `${num <= 20 ? "Front-" : num < 40 ? "Middle-" : "Back-"}${letter <= "C" ? "Left" : letter <= "F" ? "Middle" : "Right"}`
 
 }
-
+console.log("planeSeat");
 console.log(planeSeat2('2B')) //Front-Left
 console.log(planeSeat2('20B')) //Front-Left
 console.log(planeSeat2('58I')) //No Seat!!
@@ -1571,6 +1645,7 @@ function plant(seed, water, fert, temp) {
     console.log("sali")
     return res += ("-".repeat(water) + seed.repeat(fert)).repeat(water)
 }
+console.log("plant");
 //console.log(plant("@", 3, 3, 25))
 console.log(plant("#", 10, 2, 15))
 
@@ -1595,7 +1670,7 @@ const switcher2 = (x) => {
     let alpha = " zyxwvutsrqponmlkjihgfedcba!? "
     return x.map(num => alpha[num]).join("")
 }
-
+console.log("switcher");
 //console.log(switcher(['24', '12', '23', '22', '4', '26', '9', '8']))
 console.log(switcher2(['25', '7', '8', '4', '14', '23', '8', '25', '23', '29', '16', '16', '4']))//'btswmdsbd kkw
 
@@ -1622,6 +1697,7 @@ const inArray2 = (arr1, arr2) => {
 const inArray3 = (arr1, arr2) => {
     return arr1.filter(whole => (arr2.join(" ").includes(whole))).sort()
 }
+console.log("inArray");
 console.log(inArray3(["arp", "live", "strong"], ["lively", "alive", "harp", "sharp", "armstrong"]))
 
 console.log("---------------------------")
@@ -1631,6 +1707,7 @@ function toTime(seconds) {
     let minutos = Math.floor((seconds % 3600) / 60);
     return `${hora} hour(s) and ${minutos} minute(s)`;
 }
+console.log("toTime");
 console.log(toTime(3500))
 
 console.log("-------------------------")
@@ -1667,6 +1744,7 @@ const towerBuilder2 = nFloors => {
     }
     return tower;
 }
+console.log("towerBuilder");
 console.log(towerBuilder2(3))
 
 console.log("-----------------------")
@@ -1680,6 +1758,7 @@ let list1 = [
     { firstName: 'Shufen', lastName: 'L.', country: 'Taiwan', continent: 'Asia', age: 35, language: 'HTML' },
     { firstName: 'Sumayah', lastName: 'M.', country: 'Tajikistan', continent: 'Asia', age: 30, language: 'CSS' }
 ]
+console.log("countDevelopers");
 console.log(countDevelopers(list1))
 
 console.log("-----------")
@@ -1750,6 +1829,7 @@ function shoppingCalculation(input) {
 
 
 }
+console.log("shoppingCalculation");
 console.log(shoppingCalculation(["Apple is $5.", "Banana is $7.", "Orange is $2.", "Alice has $26.", "John has $41.",
     "Alice buys 2 apples.",
     "John buys 1 banana.",
@@ -1780,8 +1860,9 @@ function revrot(str, sz) {
     }
     return res
 }
-
+console.log("revrot");
 console.log(revrot("123456987653", 6))//234561876549
+
 console.log("----------------");
 //Ejercicio Name: Last Survivor (7 kyu)
 function lastSurvivor(letters, coords) {
@@ -1791,7 +1872,7 @@ function lastSurvivor(letters, coords) {
     })
     return str.join("")
 }
-
+console.log("lastSurvivor");
 console.log(lastSurvivor("foiflxtpicahhkqjswjuyhmypkrdbwnmwbrrvdycqespfvdviucjoyvskltqaqirtjqulprjjoaiagobpftywabqjdmiofpsr", [
     8, 59, 52, 93, 21, 40, 88, 85, 59, 10, 82, 18,
     74, 59, 51, 47, 75, 49, 23, 56, 1, 33, 39, 33,
@@ -1802,3 +1883,6 @@ console.log(lastSurvivor("foiflxtpicahhkqjswjuyhmypkrdbwnmwbrrvdycqespfvdviucjoy
     20, 8, 2, 11, 5, 7, 0, 10, 10, 8, 12, 3,
     5, 1, 7, 7, 5, 1, 4, 0, 4, 0, 0, 1
 ]));
+
+console.log('-----------------------------');
+

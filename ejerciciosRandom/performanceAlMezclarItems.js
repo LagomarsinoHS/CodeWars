@@ -15,15 +15,16 @@ for (let i = 0; i < ELEM; i++) {
         id: i,
         nombre: `nombre-${i}`
     })
-
-    for (let i = 0; i < ELEM; i++) {
-        products.push({
-            id: i,
-            nombre: `nombre-producto-${i}`,
-            user_id: Math.floor(Math.random() * ELEM)
-        })
-    }
 }
+
+for (let i = 0; i < ELEM; i++) {
+    products.push({
+        id: i,
+        nombre: `nombre-producto-${i}`,
+        user_id: Math.floor(Math.random() * ELEM)
+    })
+}
+
 let keyedUser = keyBy(users, "id")
 console.log({ keyedUser })
 console.time(1)

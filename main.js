@@ -1908,3 +1908,28 @@ const dr = "/+1-541-754-3010 156 Alphand_St. <J Steeve>\n 133, Green, Rd. <E Kus
     + "<P Salinge> Main Street, +1-098-512-2222, Denve\n"
 console.log(phone(dr, '1-498-512-2222'))
 console.log('-----------------------------');
+
+const maxSumArr = (arr) => {
+    let sumaMax = []
+    for (let i = 0; i < arr.length; i++) {
+        const numIterado = arr[i]
+        const numeroIteradoSgte = arr[i + 1] || 0
+        console.log(numIterado, numeroIteradoSgte);
+        if (numeroIteradoSgte && numIterado + numeroIteradoSgte > sumaMax) sumaMax = [numIterado + numeroIteradoSgte, [numIterado, numeroIteradoSgte]]
+    }
+    return sumaMax
+}
+console.log(maxSumArr([-2, 2, 5, -11, 6]));
+console.log('-----------------------------');
+
+const iqTest = numbers => {
+    const nums = numbers.split(" ")
+    const [par, impar] = nums.reduce((arr, ele) => {
+        ele % 2 == 0 ? arr[0].push(ele) : arr[1].push(ele)
+        return arr
+    }, [[], []])
+    return par.length > 1 ? nums.indexOf(impar[0]) + 1 : nums.indexOf(par[0]) + 1
+}
+console.log(iqTest("2 4 7 8 10"))
+console.log(iqTest("1 3 5 2 7"))
+console.log('-----------------------------');

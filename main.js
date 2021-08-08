@@ -1885,6 +1885,18 @@ console.log(lastSurvivor("foiflxtpicahhkqjswjuyhmypkrdbwnmwbrrvdycqespfvdviucjoy
 ]));
 
 console.log('-----------------------------');
+
+function repetirTexto(texto, veces) {
+    let resultadoArreglo = []
+    console.log("Inicial", resultadoArreglo)
+    for (let i = 0; i < veces; i++) {
+        resultadoArreglo.push(texto+"")
+        console.log(`Iteracion n°${i}, arreglo -> ${resultadoArreglo}`);
+    }
+    return resultadoArreglo.join()
+}
+console.log(repetirTexto("Hola Mundo", 3))
+
 //Ejercicio Name: Phone Directory (5 kyu)
 function phone(str, num) {
     let strSplit = str.split("\n").filter(x => x.includes(num))

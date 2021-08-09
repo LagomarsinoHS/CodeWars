@@ -1912,3 +1912,33 @@ const iqTest = numbers => {
 console.log(iqTest("2 4 7 8 10"))
 console.log(iqTest("1 3 5 2 7"))
 console.log('-----------------------------');
+
+//Simple Fun #305: Typist (6 kyu)
+const typist = s => {
+    const isUpperCase = s => s == s.toUpperCase()
+    return [...s].reduce((acc, ele, idx, self) => {
+        if (idx === 0 && ele === ele.toUpperCase()) return acc
+        else if (idx === 0) return acc = 1
+
+        if (isUpperCase(self[idx - 1]) && ele == ele.toLowerCase()) acc += 2
+        else if (isUpperCase(self[idx - 1]) && ele == ele.toUpperCase()) acc += 1
+        else if (!isUpperCase(self[idx - 1]) && ele == ele.toLowerCase()) acc += 1
+        else if (!isUpperCase(self[idx - 1]) && ele == ele.toUpperCase()) acc += 2
+        return acc
+    }, 2)
+}
+const typist2 = s => {
+    const isUpperCase = s => s == s.toUpperCase()
+    let mayusActive = false
+    return [...s].reduce((acc, ele, idx, self) => {
+        acc++
+        if (isUpperCase(ele)) {
+            if (!mayusActive) { mayusActive = !mayusActive; acc++; }
+        } else {
+            if (mayusActive) { mayusActive = !mayusActive; acc++; }
+        }
+        return acc
+    }, 0)
+}
+console.log(typist2("BeiJingDaXueDongMen"), 31)
+console.log('-----------------------------');

@@ -1942,3 +1942,13 @@ const typist2 = s => {
 }
 console.log(typist2("BeiJingDaXueDongMen"), 31)
 console.log('-----------------------------');
+
+//Remove duplicate words (7 kyu)
+const removeDuplicateWords = s => {
+    const sarr = s.split(" ")
+    console.log(sarr);
+    let a = [...new Set(s.split(" "))].join(" ")
+    console.log(a);
+}
+console.log(removeDuplicateWords('alpha beta beta gamma gamma gamma delta alpha beta beta gamma gamma gamma delta'));
+//alpha beta gamma delta

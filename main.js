@@ -1861,6 +1861,7 @@ function repetirTexto(texto, veces) {
     }
     return resultadoArreglo.join()
 }
+console.log("Repetir Texto");
 console.log(repetirTexto("Hola Mundo", 3))
 console.log('-----------------------------');
 
@@ -1885,6 +1886,7 @@ const dr = "/+1-541-754-3010 156 Alphand_St. <J Steeve>\n 133, Green, Rd. <E Kus
     + "<C Powel> *+19-421-674-8974 Chateau des Fosses Strasbourg F-68000\n <Bernard Deltheil> +1-498-512-2222; Mount Av.  Eldorado\n"
     + "+1-099-500-8000 <Peter Crush> Labrador Bd.\n +1-931-512-4855 <William Saurin> Bison Street CQ-23071\n"
     + "<P Salinge> Main Street, +1-098-512-2222, Denve\n"
+console.log("Phone");
 console.log(phone(dr, '1-498-512-2222'))
 console.log('-----------------------------');
 
@@ -1898,6 +1900,7 @@ const maxSumArr = (arr) => {
     }
     return sumaMax
 }
+console.log("Max Sum Arr");
 console.log(maxSumArr([-2, 2, 5, -11, 6]));
 console.log('-----------------------------');
 
@@ -1909,6 +1912,7 @@ const iqTest = numbers => {
     }, [[], []])
     return par.length > 1 ? nums.indexOf(impar[0]) + 1 : nums.indexOf(par[0]) + 1
 }
+console.log("iqTest");
 console.log(iqTest("2 4 7 8 10"))
 console.log(iqTest("1 3 5 2 7"))
 console.log('-----------------------------');
@@ -1940,10 +1944,28 @@ const typist2 = s => {
         return acc
     }, 0)
 }
+console.log("typist");
 console.log(typist2("BeiJingDaXueDongMen"), 31)
 console.log('-----------------------------');
 
 //Remove duplicate words (7 kyu)
 const removeDuplicateWords = s => [...new Set(s.split(" "))].join(" ")
+console.log("Remove Duplicate Words");
 console.log(removeDuplicateWords('alpha beta beta gamma gamma gamma delta alpha beta beta gamma gamma gamma delta'));
-//alpha beta gamma delta
+console.log('-----------------------------');
+
+//Format a string of names like 'Bart, Lisa & Maggie (6 kyu)
+const list = arr => {
+    if (!arr.length) return ''
+    const validaName = names => {
+        if (names.length == 1) return names[0]
+        if (names.length == 2) return `${names[0]} & ${names[1]}`
+        const firstNames = names.slice(0,names.length-2).join(", ")//names.join(", ")
+        return `${firstNames}, ${names[names.length-2]} & ${names[names.length-1]}`
+    }
+    const names = arr.map((x) => x.name)
+    return validaName(names)
+}
+console.log(list([{ name: 'Bart' }]));
+console.log(list([{ name: 'Bart' },{ name: 'Homer' }, { name: 'Lisa' }, { name: 'Maggie' }]));
+console.log(list([{ name: 'Bart' }, { name: 'Lisa' }]));

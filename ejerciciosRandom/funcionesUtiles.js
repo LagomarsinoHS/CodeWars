@@ -63,6 +63,7 @@ const convertToRoman2 = (num) => {
     return str;
 };
 
+//Funcion que te retorna una cantidad definida de numeros de la lista fibonacci
 const serieFibonacci = num => {
     let result = [0, 1]
     for (let i = 2; i < num; i++) {
@@ -72,16 +73,34 @@ const serieFibonacci = num => {
 }
 //0 1 1 2 3 5 8....
 
+//Conseguir X numero de la lista fibonacci, con programacion dinamica
+const getNthFibonacciDynamicProgramming = (num, memo = {}) => {
+    if (memo.hasOwnProperty(num)) return memo[num];
+    if (num <= 2) return 1;
+    memo[num] = getNthFibonacciDynamicProgramming(num - 1, memo) + getNthFibonacciDynamicProgramming(num - 2, memo);
+    return memo[num];
+}
+
+//funcion que aplana el array no importa cuantos niveles tenga
+const flattener = (arr) => {
+    const flatten = (acc, ele) => {
+        if (Array.isArray(ele)) return ele.reduce(flatten, acc)
+        return [...acc, ele]
+    }
+    const res = arr.reduce(flatten, [])
+    return res
+}
+//input ->[1, 2, 3, 4, [5, 6, [7, 8, [9, 10]]]]
+//output -> [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
 
 
 
-/*
+
+module.exports = {
     convertToRoman,
     convertToRoman2,
-    serieFibonacci
-*/
-
-
-
-
+    serieFibonacci,
+    flattener,
+    getNthFibonacciDynamicProgramming
+}

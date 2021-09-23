@@ -1966,6 +1966,20 @@ const list = arr => {
     const names = arr.map((x) => x.name)
     return validaName(names)
 }
+function list2(names){
+    return names.reduce((prev, current, index, array)=>{
+      if (index === 0){
+        return current.name;
+      }
+      else if (index === array.length - 1){
+        return prev + ' & ' + current.name;
+      } 
+      else {
+        return prev + ', ' + current.name;
+      }
+    }, '');
+   }
 console.log(list([{ name: 'Bart' }]));
 console.log(list([{ name: 'Bart' },{ name: 'Homer' }, { name: 'Lisa' }, { name: 'Maggie' }]));
 console.log(list([{ name: 'Bart' }, { name: 'Lisa' }]));
+console.log('-----------------------------');

@@ -93,6 +93,8 @@ const flattener = (arr) => {
 //input ->[1, 2, 3, 4, [5, 6, [7, 8, [9, 10]]]]
 //output -> [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
+//Permite mezclar el arreglo
+const shuffleArray = (arr) => arr.sort(() => 0.5 - Math.random());
 
 
 
@@ -102,5 +104,6 @@ module.exports = {
     convertToRoman2,
     serieFibonacci,
     flattener,
-    getNthFibonacciDynamicProgramming
+    getNthFibonacciDynamicProgramming,
+    shuffleArray
 }

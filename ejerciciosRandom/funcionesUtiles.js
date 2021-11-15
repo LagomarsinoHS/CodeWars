@@ -143,6 +143,8 @@ const checkRut = rut => {
     // Si todo sale bien, eliminar errores (decretar que es válido)
     return true
 }
+//URL CheckRut con TS
+//https://gist.github.com/themakunga/0dcbea72653778ef90729db5931895f8?fbclid=IwAR3xYd8FVe9ZrU6spTeQsTAb_QW_Ly1QOv_ovuLWfTXNV2kuTPAzOgmorCA
 
 
 

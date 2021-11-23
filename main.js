@@ -1960,26 +1960,56 @@ const list = arr => {
     const validaName = names => {
         if (names.length == 1) return names[0]
         if (names.length == 2) return `${names[0]} & ${names[1]}`
-        const firstNames = names.slice(0,names.length-2).join(", ")//names.join(", ")
-        return `${firstNames}, ${names[names.length-2]} & ${names[names.length-1]}`
+        const firstNames = names.slice(0, names.length - 2).join(", ")//names.join(", ")
+        return `${firstNames}, ${names[names.length - 2]} & ${names[names.length - 1]}`
     }
     const names = arr.map((x) => x.name)
     return validaName(names)
 }
-function list2(names){
-    return names.reduce((prev, current, index, array)=>{
-      if (index === 0){
-        return current.name;
-      }
-      else if (index === array.length - 1){
-        return prev + ' & ' + current.name;
-      } 
-      else {
-        return prev + ', ' + current.name;
-      }
+function list2(names) {
+    return names.reduce((prev, current, index, array) => {
+        if (index === 0) {
+            return current.name;
+        }
+        else if (index === array.length - 1) {
+            return prev + ' & ' + current.name;
+        }
+        else {
+            return prev + ', ' + current.name;
+        }
     }, '');
-   }
+}
 console.log(list([{ name: 'Bart' }]));
-console.log(list([{ name: 'Bart' },{ name: 'Homer' }, { name: 'Lisa' }, { name: 'Maggie' }]));
+console.log(list([{ name: 'Bart' }, { name: 'Homer' }, { name: 'Lisa' }, { name: 'Maggie' }]));
 console.log(list([{ name: 'Bart' }, { name: 'Lisa' }]));
 console.log('-----------------------------');
+
+//Duplicate Encoder (6 kyu)
+function duplicateEncode(word) {
+    const arrWords = [...word].map(x=>x.toLowerCase())
+    const countWords = arrWords.reduce((acc, ele) => {
+        if (!acc.hasOwnProperty(ele)) acc[ele] = 0
+        acc[ele] += 1
+        return acc
+    }, {})
+    let str = ''
+    arrWords.forEach(letter => countWords[letter] > 1 ? str += ')' : str += '(')
+    return str
+}
+function duplicateEncode2(word) {
+    const arrWords = [...word]
+    let str = ''
+    if (/[A-Z]/.test(arrWords[0])) return 'Ignorada'
+    for (const letter of word) {
+        const regex = new RegExp(+'"'+letter+'"', "g");
+        const repetidos = word.match(regex).length
+        repetidos > 1 ? str += ')' : str += '('
+    }
+    return str
+}
+
+
+console.log(duplicateEncode("din"));//"((("
+console.log(duplicateEncode("recede"));//"()()()"
+console.log(duplicateEncode("Success"));//")())())","should ignore case"
+console.log(duplicateEncode("(( @"));//,"))((" //!no funciona con la 2da funcion, no agarra caracteres que no sean letras

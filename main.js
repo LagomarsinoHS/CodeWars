@@ -2008,7 +2008,6 @@ function duplicateEncode2(word) {
     return str
 }
 
-
 console.log(duplicateEncode("din"));//"((("
 console.log(duplicateEncode("recede"));//"()()()"
 console.log(duplicateEncode("Success"));//")())())","should ignore case"

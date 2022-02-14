@@ -143,6 +143,27 @@ const checkRut = rut => {
     // Si todo sale bien, eliminar errores (decretar que es válido)
     return true
 }
+
+//Si quiero hacer una funcion que busque el indice de la suma de 2 numeros con un target pero solo 1 bucle
+const nums = [1, 5, 7, 10, 3, 12]
+
+const twoSum = (numsArr, target) => {
+    const diffs = {}
+    for (const idx in numsArr) {
+        const value = numsArr[idx]
+
+        if (diffs[target - value]) return [diffs[target - value].idx, idx]
+
+        diffs[value] = {
+            difference: target - value,
+            idx
+        }
+
+        console.log(diffs)
+    }
+    return null
+}
+
 //URL CheckRut con TS
 //https://gist.github.com/themakunga/0dcbea72653778ef90729db5931895f8?fbclid=IwAR3xYd8FVe9ZrU6spTeQsTAb_QW_Ly1QOv_ovuLWfTXNV2kuTPAzOgmorCA
 
@@ -155,5 +176,6 @@ module.exports = {
     flattener,
     getNthFibonacciDynamicProgramming,
     shuffleArray,
-    checkRut
+    checkRut,
+    twoSum
 }

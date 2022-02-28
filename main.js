@@ -1986,7 +1986,7 @@ console.log('-----------------------------');
 
 //Duplicate Encoder (6 kyu)
 function duplicateEncode(word) {
-    const arrWords = [...word].map(x=>x.toLowerCase())
+    const arrWords = [...word].map(x => x.toLowerCase())
     const countWords = arrWords.reduce((acc, ele) => {
         if (!acc.hasOwnProperty(ele)) acc[ele] = 0
         acc[ele] += 1
@@ -2001,7 +2001,7 @@ function duplicateEncode2(word) {
     let str = ''
     if (/[A-Z]/.test(arrWords[0])) return 'Ignorada'
     for (const letter of word) {
-        const regex = new RegExp(+'"'+letter+'"', "g");
+        const regex = new RegExp(+'"' + letter + '"', "g");
         const repetidos = word.match(regex).length
         repetidos > 1 ? str += ')' : str += '('
     }
@@ -2012,3 +2012,45 @@ console.log(duplicateEncode("din"));//"((("
 console.log(duplicateEncode("recede"));//"()()()"
 console.log(duplicateEncode("Success"));//")())())","should ignore case"
 console.log(duplicateEncode("(( @"));//,"))((" //!no funciona con la 2da funcion, no agarra caracteres que no sean letras
+console.log('-----------------------------');
+
+//Easy Balance Checking (6 kyu)
+function balance(book) {
+    const round=x=>Number(x).toFixed(2);
+    book=book.split("\n").filter(Boolean).map(x=>x.replace(/[^a-z0-9.]/gi," ").split(" ").filter(Boolean));
+    let balance=book[0];
+    let totalExpence=0;
+    let result=["Original Balance: "+round(balance)];
+    book.forEach((x,i)=>{
+      if(i>0){
+        totalExpence+=Number(book[i][2]);
+        balance-=Number(book[i][2])
+        result.push(book[i][0]+" "+book[i][1]+" "+round(book[i][2])+" Balance "+round(balance));
+      }
+    });
+    result.push("Total expense  "+round(totalExpence));
+    result.push("Average expense  "+round(totalExpence/(book.length-1)));
+    return result.join("\r\n");
+  }
+console.log(balance(`1000.00!=
+
+125 Market !=:125.45
+126 Hardware =34.95
+127 Video! 7.45
+128 Book :14.32
+129 Gasoline ::16.10
+`))
+console.log('-----------------------------');
+console.log(balance(`1233.00
+125 Hardware;! 24.8?;
+123 Flowers 93.5
+127 Meat 120.90
+120 Picture 34.00
+124 Gasoline 11.00
+123 Photos;! 71.4?;
+122 Picture 93.5
+132 Tyres;! 19.00,?;
+129 Stamps 13.6
+129 Fruits{} 17.6
+129 Market;! 128.00?;
+121 Gasoline;! 13.6?;`));

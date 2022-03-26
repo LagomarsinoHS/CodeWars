@@ -2016,22 +2016,22 @@ console.log('-----------------------------');
 
 //Easy Balance Checking (6 kyu)
 function balance(book) {
-    const round=x=>Number(x).toFixed(2);
-    book=book.split("\n").filter(Boolean).map(x=>x.replace(/[^a-z0-9.]/gi," ").split(" ").filter(Boolean));
-    let balance=book[0];
-    let totalExpence=0;
-    let result=["Original Balance: "+round(balance)];
-    book.forEach((x,i)=>{
-      if(i>0){
-        totalExpence+=Number(book[i][2]);
-        balance-=Number(book[i][2])
-        result.push(book[i][0]+" "+book[i][1]+" "+round(book[i][2])+" Balance "+round(balance));
-      }
+    const round = x => Number(x).toFixed(2);
+    book = book.split("\n").filter(Boolean).map(x => x.replace(/[^a-z0-9.]/gi, " ").split(" ").filter(Boolean));
+    let balance = book[0];
+    let totalExpence = 0;
+    let result = ["Original Balance: " + round(balance)];
+    book.forEach((x, i) => {
+        if (i > 0) {
+            totalExpence += Number(book[i][2]);
+            balance -= Number(book[i][2])
+            result.push(book[i][0] + " " + book[i][1] + " " + round(book[i][2]) + " Balance " + round(balance));
+        }
     });
-    result.push("Total expense  "+round(totalExpence));
-    result.push("Average expense  "+round(totalExpence/(book.length-1)));
+    result.push("Total expense  " + round(totalExpence));
+    result.push("Average expense  " + round(totalExpence / (book.length - 1)));
     return result.join("\r\n");
-  }
+}
 console.log(balance(`1000.00!=
 
 125 Market !=:125.45
@@ -2054,3 +2054,122 @@ console.log(balance(`1233.00
 129 Fruits{} 17.6
 129 Market;! 128.00?;
 121 Gasoline;! 13.6?;`));
+console.log('-----------------------------');
+
+//Shopping Calculation (6 kyu)
+function shoppingCalculation(input) {
+    const object = input.reduce((acc, ele) => {
+        if (ele.split(" ").includes('has')) {
+            const [name, money] = ele.split(' has').map(x => x.trim().replace('.', ''))
+            acc[name] = {
+                money: +money.replace("$", ''),
+                product: []
+            }
+        }
+        return acc
+    }, {})
+
+    const prices = input.reduce((acc, ele) => {
+        if (ele.split(" ").includes('is')) {
+            const [fruit, price] = ele.split('is').map(x => x.trim().replace('.', ''))
+            acc[fruit.toLowerCase()] = price.replace('$', '')
+        }
+        return acc
+    }, {})
+
+    input.forEach(inp => {
+        if (inp.includes('buys')) {
+            const name = inp.split(" ")[0]
+            const product = inp.split(" ").pop().replace('.', '')
+            const arr = inp.split(" ")
+            const qty = arr[arr.length - 2]
+
+            object[name].product.push({ qty, product })
+        }
+    })
+
+    const result = []
+    for (const name in object) {
+        let money = object[name].money
+        const products = object[name].product
+        let items = ''
+
+        products.forEach(prod => {
+            const { qty, product } = prod
+            const priceProd = prices[product.endsWith('s') ? product.slice(0, -1) : product]
+            money = money - (priceProd * qty)
+            items += `${qty} ${product}, `
+        })
+
+
+        result.push(
+            [name, '$' + money, items.trim().substring(0, items.length - 2)]
+        )
+    }
+
+    console.log(result);
+    return result
+}
+
+function shoppingCalculation2(input) {
+    const prices = {}
+    const people = {}
+    const buys = []
+
+    for (let command of input) {
+        let [name, operator, price] = command.split(" ")
+        if (operator === 'is') {
+            prices[name.toLowerCase()] = cleanPrice(price)
+        }
+        else if (operator === 'has') {
+            people[name] = { money: cleanPrice(price), products: [] }
+        }
+        else {
+            buys.push(command)
+        }
+    }
+
+    for (let command of buys) {
+        let [name, operator, amount, product] = command.split(" ")
+        const clean_product = cleanProduct(product)
+        const cost = prices[clean_product] * amount
+        people[name].money -= cost
+        const product_str = amount > 1 ? `${amount} ${clean_product}s` : `${amount} ${clean_product}`
+        people[name].products = [...people[name].products, product_str]
+    }
+
+    const result = []
+
+    for (let name in people) {
+        result.push(
+            [name, `$${people[name].money}`, people[name].products.join(", ")]
+        )
+    }
+
+
+    return result
+}
+
+const cleanPrice = (price) => {
+    return +price.substring(1, price.length - 1)
+}
+
+const cleanProduct = (str) => {
+    if (str[str.length - 1] == '.')
+        str = str.substring(0, str.length - 1)
+
+    if (str[str.length - 1] == 's')
+        str = str.substring(0, str.length - 1)
+
+    return str
+}
+console.log(shoppingCalculation2([
+    "Apple is $5.",
+    "Banana is $7.",
+    "Orange is $2.",
+    "Lisa has $26.",
+    "Arthas has $41.",
+    "Lisa buys 2 apples.",
+    "Arthas buys 1 banana.",
+    "Lisa buys 5 oranges.",
+]));

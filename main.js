@@ -2173,6 +2173,16 @@ console.log(shoppingCalculation2([
     "Arthas buys 1 banana.",
     "Lisa buys 5 oranges.",
 ]));
+console.log('-----------------------------');
 
-
-console.log(false == '0'); console.log(false === '0')
+//Stop gninnipS My sdroW! (6 Kyu)
+function spinWords(string) {
+    //TODO Have fun :)
+    return string.split(" ").map(word => {
+        if (word.length >= 5) {
+            return word = word.split("").reverse().join("")
+        }
+        return word
+    }).join(" ")
+}
+console.log(spinWords("Hey fellow warriors"))

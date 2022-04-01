@@ -168,6 +168,27 @@ const twoSum = (numsArr, target) => {
 //https://gist.github.com/themakunga/0dcbea72653778ef90729db5931895f8?fbclid=IwAR3xYd8FVe9ZrU6spTeQsTAb_QW_Ly1QOv_ovuLWfTXNV2kuTPAzOgmorCA
 
 
+const generatePassword = (length, hasNumbers, hasSymbols, hasUpper, hasLower) => {
+    const numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+    const symbols = ["!", "@", "#", "$", "%", "&"]
+    const arrayOfLowerLetters = Array.from(Array(26)).map((_, idx) => String.fromCharCode(idx + 97))
+    const arrayOfUpperLetters = arrayOfLowerLetters.map(letter => letter.toUpperCase())
+
+    const availableChars = [
+        ...(hasNumbers ? numbers : []),
+        ...(hasSymbols ? symbols : []),
+        ...(hasUpper ? arrayOfUpperLetters : []),
+        ...(hasLower ? arrayOfLowerLetters : []),
+    ]
+
+    if (!availableChars.length) return ''
+    let generatedPassword = ''
+    for (let idx = 1; idx <= length; idx++) {
+        const randomIndex = Math.floor(Math.random() * availableChars.length)
+        generatedPassword += availableChars[randomIndex]
+    }
+    return generatedPassword
+}
 
 module.exports = {
     convertToRoman,
@@ -177,5 +198,6 @@ module.exports = {
     getNthFibonacciDynamicProgramming,
     shuffleArray,
     checkRut,
-    twoSum
+    twoSum,
+    generatePassword
 }

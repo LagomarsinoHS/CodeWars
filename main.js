@@ -2173,3 +2173,6 @@ console.log(shoppingCalculation2([
     "Arthas buys 1 banana.",
     "Lisa buys 5 oranges.",
 ]));
+
+
+console.log(false == '0'); console.log(false === '0')

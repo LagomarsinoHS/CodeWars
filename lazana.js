@@ -51,3 +51,21 @@ function capicua3(num) {
     return isCapicua ? 'Es Capicua' : 'No es Capicua'
 }
 console.log(capicua3(60056))
+
+function esPrimo(numero) {
+    for (let i = 2; i < numero; i++) {
+        if (numero % i === 0) {
+            return false;
+        }
+    }
+    return numero !== 1;
+}
+
+function getPrimeNumbers(num) {
+    const primos = []
+    for (let idx = 2; idx <= num; idx++) {
+        if (esPrimo(idx)) primos.push(idx)
+    }
+    return primos
+}
+console.log(getPrimeNumbers(100));

@@ -1,5 +1,5 @@
 /*
-Compose y Pipe es una forma de aplicar distintas funciones a un argumentos, normalmente esto se aplica de derecha a izquierda
+Compose y Pipe es una forma de aplicar distintas funciones a un argumento, normalmente esto se aplica de izquierda a derecha
 Ej: Si tenemos un numero N, al cual queremos aplicar una f(x) que suma 2 y luego una f(x) que multiplica por 3 se vería asi
 multiplicaPor3(sumaDos(3))
 

@@ -1,3 +1,8 @@
+/*
+Funcion llamada trampoline, se usa para evitar el max call stack.
+todo: Averiguar bien como funcionaba, no recuerdo.
+*/
+
 const trampoline = fn => (...args) => {
     let result = fn(...args)
     while (typeof result === 'function') {

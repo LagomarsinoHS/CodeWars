@@ -11,10 +11,20 @@ const trampoline = fn => (...args) => {
     return result
 }
 
-const suma = (num, sum = 0) => (
-    num === 0 ? sum : () => suma(num - 1, sum + num)
-)
+const suma = (num, sum = 0) => {
+    return num === 0
+        ? sum
+        : suma(num - 1, sum + num)
+}
+//console.log(suma(100))
 
-const tsuma = trampoline(suma)
-const r = tsuma(10000000000000000000000000000000)
-console.log(r);
+const sumaNueva = (num, sum = 0) => {
+    return num === 0
+        ? sum
+        : () => sumaNueva(num - 1, sum + num)
+}
+
+
+const tsuma = trampoline(sumaNueva)
+const result = tsuma(100000)
+console.log(result); 

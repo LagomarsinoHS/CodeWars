@@ -2238,14 +2238,13 @@ console.log('-----------------------------');
 
 //Help Suzuki count his vegetables....(7 kyu)
 function countVegetables(string) {
-    const vegs = ["cabbage", "carrot", "celery", "cucumber", "mushroom", "onion", "pepper", "potato", "tofu", "turnip"]
-    const arrVegs = string.split(" ").reduce((acc, vegetable) => {
-
-        if (vegs.includes(vegetable) && !acc[vegetable]) acc[vegetable] = 0
-        if (acc.hasOwnProperty(vegetable)) acc[vegetable]++
-        return acc
-
-    }, {})
+    const arrVegs = string
+        .match(/cabbage|carrot|celery|cucumber|mushroom|onion|pepper|potato|tofu|turnip/g)
+        .reduce((acc, vegetable) => {
+            if (!acc[vegetable]) acc[vegetable] = 0
+            acc[vegetable]++
+            return acc
+        }, {})
 
     const result = []
     for (const prop in arrVegs) {
@@ -2257,9 +2256,11 @@ function countVegetables(string) {
         const [countA, nameA] = a
         const [countB, nameB] = b
 
-        if (countA === countB) return nameB.localeCompare(nameA)
-        else return countB - countA
+        //if (countA === countB) return nameB.localeCompare(nameA)
+        //else return countB - countA
+        return countB - countA || nameB.localeCompare(nameA)
     })
+
 }
 const vegsString = `mushroom chopsticks chopsticks turnip mushroom carrot mushroom cabbage mushroom carrot tofu pepper cabbage potato cucumber mushroom mushroom mushroom potato turnip chopsticks cabbage celery celery turnip pepper chopsticks potato potato onion cabbage cucumber onion pepper onion cabbage potato tofu carrot cabbage cabbage turnip mushroom cabbage cabbage cucumber cabbage chopsticks turnip pepper onion pepper onion mushroom turnip carrot carrot tofu onion tofu chopsticks chopsticks chopsticks mushroom cucumber chopsticks carrot potato cabbage cabbage carrot mushroom chopsticks mushroom celery turnip onion carrot turnip cucumber carrot potato mushroom turnip mushroom cabbage tofu turnip turnip turnip mushroom tofu potato pepper turnip potato turnip celery carrot turnip`;
 console.log(countVegetables(vegsString))

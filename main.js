@@ -2264,3 +2264,39 @@ function countVegetables(string) {
 }
 const vegsString = `mushroom chopsticks chopsticks turnip mushroom carrot mushroom cabbage mushroom carrot tofu pepper cabbage potato cucumber mushroom mushroom mushroom potato turnip chopsticks cabbage celery celery turnip pepper chopsticks potato potato onion cabbage cucumber onion pepper onion cabbage potato tofu carrot cabbage cabbage turnip mushroom cabbage cabbage cucumber cabbage chopsticks turnip pepper onion pepper onion mushroom turnip carrot carrot tofu onion tofu chopsticks chopsticks chopsticks mushroom cucumber chopsticks carrot potato cabbage cabbage carrot mushroom chopsticks mushroom celery turnip onion carrot turnip cucumber carrot potato mushroom turnip mushroom cabbage tofu turnip turnip turnip mushroom tofu potato pepper turnip potato turnip celery carrot turnip`;
 console.log(countVegetables(vegsString))
+console.log('-----------------------------');
+
+//Predict your age!(7 kyu)
+function predictAge(...ages) {
+    //return Math.floor(Math.sqrt(ages.reduce((acc, sum) => acc + (sum * sum), 0)) / 2)
+    return Math.floor(Math.hypot(...ages) / 2)
+}
+console.log(predictAge(65, 60, 75, 55, 60, 63, 64, 45))//86
+console.log('-----------------------------');
+
+//Playing with passphrases(6 Kyu)
+function playPass(s, n) {
+    const transformCode = (char, n) => {
+        if (Number(char) && typeof parseInt(char) == 'number') return String(9 - Number(char))
+        else if (/[a-zA-Z]/i.test(char)) return String.fromCharCode(char.charCodeAt(0) + n);
+        return char
+    }
+    const upAndDown = str => {
+        let res = ''
+        for (let i = 0; i < str.length; i++) {
+            const letter = str[i];
+            res = i % 2 == 0 ? letter.toUpperCase() + res : letter.toLowerCase() + res
+        }
+        return res
+    }
+
+    let res = ''
+    for (const char of s) {
+        res += transformCode(char, n)
+    }
+
+    return upAndDown(res)
+}
+//console.log(playPass("BORN IN 2015!", 1))
+//console.log(playPass("I LOVE YOU!!!", 1))//"!!!vPz fWpM J"
+console.log(playPass("MY GRANMA CAME FROM NY ON THE 23RD OF APRIL 2015", 2))//"4897 NkTrC Hq fT67 GjV Pq aP OqTh gOcE CoPcTi aO"

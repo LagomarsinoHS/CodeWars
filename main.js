@@ -398,14 +398,6 @@ console.log("songDecoder");
 console.log(songDecoder("AWUBBWUBC"))
 console.log("------------------------")
 
-String.prototype.camelCase = function () {
-    return this.split(' ').map(function (word) {
-        return word.charAt(0).toUpperCase() + word.slice(1);
-    }).join("")
-}
-console.log("camelCase");
-console.log(" camel case word".camelCase())
-console.log("------------------------------");
 
 //Nombre Ejercicio: Greed is Good (5 Kyu)
 function score(dice) {
@@ -2300,3 +2292,45 @@ function playPass(s, n) {
 //console.log(playPass("BORN IN 2015!", 1))
 //console.log(playPass("I LOVE YOU!!!", 1))//"!!!vPz fWpM J"
 console.log(playPass("MY GRANMA CAME FROM NY ON THE 23RD OF APRIL 2015", 2))//"4897 NkTrC Hq fT67 GjV Pq aP OqTh gOcE CoPcTi aO"
+console.log('-----------------------------');
+
+//Convert string to camel case (6 Kyu)
+function toCamelCase(str) {
+    let finalStr = ''
+    for (let i = 0; i <= str.length; i++) {
+        const char = str[i] || ''
+        if (/-|_/.test(char)) {
+            const newChar = str[i + 1]
+            finalStr += newChar.toUpperCase()
+            i++
+        } else {
+            finalStr += char
+        }
+    }
+    return finalStr
+}
+console.log(toCamelCase('')) // ''
+console.log(toCamelCase("the_stealth_warrior"))// 'theStealthWarrior'
+console.log(toCamelCase("The-Stealth-Warrior"))// 'TheStealthWarrior'
+console.log(toCamelCase("A-B-C"))// 'ABC'
+console.log('-----------------------------');
+
+//Write Number in Expanded Form (6 Kyu)
+function expandedForm(num) {
+    const give0 = num => '0'.repeat(num.toString().length - 1)
+
+    const result = []
+    const numToStr = num.toString()
+    for (const idx in numToStr) {
+        const numS = numToStr[idx]
+        if (numS === '0') continue;
+        else {
+            const corte = numToStr.slice(idx)
+            result.push(`${numS}${give0(corte)}`)
+        }
+    }
+    return result.join(' + ')
+}
+console.log((expandedForm(12)))// '10 + 2'
+console.log((expandedForm(42)))//  '40 + 2'
+console.log((expandedForm(70304)))// '70000 + 300 + 4'

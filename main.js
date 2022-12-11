@@ -403,7 +403,7 @@ console.log("------------------------")
 function score(dice) {
     let uno = 0, dos = 0, tres = 0, cuatro = 0, cinco = 0, seis = 0
     let total = 0
-    dice.map(e => {
+    dice.forEach(e => {
         switch (e) {
             case 1: uno++
                 break;
@@ -2334,3 +2334,67 @@ function expandedForm(num) {
 console.log((expandedForm(12)))// '10 + 2'
 console.log((expandedForm(42)))//  '40 + 2'
 console.log((expandedForm(70304)))// '70000 + 300 + 4'
+console.log('-----------------------------');
+
+//Adding Big Numbers (4 kyu)
+function add(a, b) {
+    let arrA = [...a], arrB = [...b]
+    const arrayDesigual = arrA.length > arrB.length ? arrB : arrA
+    while (arrA.length != arrB.length) arrayDesigual.unshift('0')
+
+    let carry = 0;
+    let result = [];
+    for (let i = arrA.length - 1; i >= 0; i--) {
+        let sumOfDigits = parseInt(arrA[i]) + parseInt(arrB[i]) + carry;
+        carry = sumOfDigits >= 10 ? 1 : 0;
+        sumOfDigits = String(sumOfDigits);
+
+        result.unshift(sumOfDigits[sumOfDigits.length - 1]);
+    }
+
+    if (carry == 1) result.unshift(carry);
+
+    return result.join("");
+}
+
+//console.log(add("1", "1")) // "2
+//console.log(add("123", "456")) // "579
+//console.log(add("888", "222")) // "1110
+console.log(add("1372", "69")) // "1441
+//console.log(add("12", "456")) // "468
+//console.log(add("101", "100")) // "201
+console.log('-----------------------------');
+
+function score2(dice) {
+
+    const util = (obj, i) => {
+        let numeroDeReps = obj.get(i)
+        if (!numeroDeReps) return 0
+
+        let total = 0
+        if (i === 1 && numeroDeReps > 2) total += 1000, numeroDeReps -= 3
+        if (i === 1) total += (100 * numeroDeReps)
+        if (i === 6 && numeroDeReps > 2) total += 600
+        if (i === 5 && numeroDeReps > 2) total += 500, numeroDeReps -= 3
+        if (i === 5) total += (50 * numeroDeReps)
+        if (i === 4 && numeroDeReps > 2) total += 400
+        if (i === 3 && numeroDeReps > 2) total += 300
+        if (i === 2 && numeroDeReps > 2) total += 200
+        return total
+    }
+    let result = 0;
+    const obj = dice
+        .reduce((acc, num) => {
+            let data = acc.get(num) + 1 || 1
+            acc.set(num, data)
+            return acc
+        }, new Map())
+
+    Array.from({ length: 6 }, (_, i) => {
+        result += util(obj, i + 1)
+    })
+    return result
+}
+console.log(score2([5, 1, 3, 4, 1]))  // 250:  50 (for the 5) + 2 * 100 (for the 1s)
+console.log(score2([1, 1, 1, 3, 1])) //  1100: 1000 (for three 1s) + 100 (for the other 1)
+console.log(score2([2, 4, 4, 5, 4])) //  450:  400 (for three 4s) + 50 (for the 5)

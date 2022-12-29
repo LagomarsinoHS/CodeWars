@@ -60,6 +60,7 @@ function narcissistic(value) {
         return valor == value ? true : false
     }
 }
+
 function narcissistic2(value) {
     const arrayOfNums = value.toString().split("")
     const numLength = arrayOfNums.length
@@ -71,13 +72,16 @@ console.log('-----------------------------');
 
 //Nombre Ejercicio: Highest and Lowest
 function highAndLow(numbers) {
-    // ...
     let numero = numbers.split(" ")
     console.log(numero);
     let result = Math.max(...numero) + " " + Math.min(...numero)
     return result
 }
 
+function highAndLow2(numbers) {
+    let numeros = numbers.split(" ").sort((a,b)=>+b - +a)
+    return `${numeros[0]}  ${numeros.at(-1)}`
+}
 console.log("highAndLow")
 console.log(highAndLow("4 5 29 54 4 0 -214 542 -64 1 -3 6 -6"));
 console.log('-----------------------------');

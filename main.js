@@ -60,6 +60,11 @@ function narcissistic(value) {
         return valor == value ? true : false
     }
 }
+function narcissistic2(value) {
+    const arrayOfNums = value.toString().split("")
+    const numLength = arrayOfNums.length
+    return arrayOfNums.reduce((acc, num) => acc + (Math.pow(parseInt(num), numLength)), 0) === value
+}
 console.log("narcissistic")
 console.log(narcissistic(9474));
 console.log('-----------------------------');

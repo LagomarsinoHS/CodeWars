@@ -79,7 +79,7 @@ function highAndLow(numbers) {
 }
 
 function highAndLow2(numbers) {
-    let numeros = numbers.split(" ").sort((a,b)=>+b - +a)
+    let numeros = numbers.split(" ").sort((a, b) => +b - +a)
     return `${numeros[0]}  ${numeros.at(-1)}`
 }
 console.log("highAndLow")
@@ -2407,3 +2407,11 @@ function score2(dice) {
 console.log(score2([5, 1, 3, 4, 1]))  // 250:  50 (for the 5) + 2 * 100 (for the 1s)
 console.log(score2([1, 1, 1, 3, 1])) //  1100: 1000 (for three 1s) + 100 (for the other 1)
 console.log(score2([2, 4, 4, 5, 4])) //  450:  400 (for three 4s) + 50 (for the 5)
+
+//The 12 Days of Christmas (7 kyu)
+const comparator = function (a, b) {
+    const f = str => str[0] === 'O' ? 100 : str[0] === 'a' ? 1 : parseInt(str)
+    return f(b) - f(a)
+}
+
+

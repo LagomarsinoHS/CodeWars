@@ -2375,7 +2375,6 @@ console.log(add("1372", "69")) // "1441
 console.log('-----------------------------');
 
 function score2(dice) {
-
     const util = (obj, i) => {
         let numeroDeReps = obj.get(i)
         if (!numeroDeReps) return 0
@@ -2407,11 +2406,21 @@ function score2(dice) {
 console.log(score2([5, 1, 3, 4, 1]))  // 250:  50 (for the 5) + 2 * 100 (for the 1s)
 console.log(score2([1, 1, 1, 3, 1])) //  1100: 1000 (for three 1s) + 100 (for the other 1)
 console.log(score2([2, 4, 4, 5, 4])) //  450:  400 (for three 4s) + 50 (for the 5)
+console.log('-----------------------------');
 
-//The 12 Days of Christmas (7 kyu)
-const comparator = function (a, b) {
-    const f = str => str[0] === 'O' ? 100 : str[0] === 'a' ? 1 : parseInt(str)
-    return f(b) - f(a)
+//Decipher this! (6 Kyu)
+function decipherThis(str) {
+    return str
+        .split(" ")
+        .reduce((phrase, word) => {
+            return phrase += " " + word
+                .replace(/\d+/g, w => String.fromCharCode(w))
+                .replace(/(.)(.)(.*)(.)/, '$1$4$3$2')
+        }, '')
+        .trim()
 }
+console.log(decipherThis('72eva 97 103o 97t 116sih 97dn 115ee 104wo 121uo 100o'));
+//Have a go at this and see how you do
 
-
+/* the second and the last letter is switched(e.g.Hello becomes Holle)
+the first letter is replaced by its character code(e.g.H becomes 72) */

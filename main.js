@@ -2420,7 +2420,11 @@ function decipherThis(str) {
         .trim()
 }
 console.log(decipherThis('72eva 97 103o 97t 116sih 97dn 115ee 104wo 121uo 100o'));
-//Have a go at this and see how you do
+console.log('-----------------------------');
 
-/* the second and the last letter is switched(e.g.Hello becomes Holle)
-the first letter is replaced by its character code(e.g.H becomes 72) */
+//International Morse Code Encryption (7 Kyu)
+function encryption(message) {
+    const CHAR_TO_MORSE = {} //this exist on the kata
+    return [...message].reduce((phrase, word) => phrase += `${CHAR_TO_MORSE[word] || ' '} `, '').trim()
+}
+console.log(encryption('HELLO WORLD'));//".... . .-.. .-.. ---   .-- --- .-. .-.. -.."

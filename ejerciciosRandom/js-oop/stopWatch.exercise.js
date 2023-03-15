@@ -22,3 +22,32 @@ function StopWatch() {
     })
 }
 
+// Version con class
+const sw = new StopWatch()
+
+class StopWatchClass {
+    #started = false;
+    #startTime;
+    constructor() {
+        this.duration = 0;
+    }
+
+    start() {
+        if (this.#started) throw new Error('StopWatch already started.');
+        this.#started = true;
+        this.#startTime = new Date().getTime();
+    }
+
+    stop() {
+        if (!this.#started) throw new Error('StopWatch already Stopped.');
+        this.#started = false;
+        const seconds = (new Date().getTime() - this.#startTime) / 1000;
+        this.duration += seconds;
+    }
+
+    get reset() {
+        this.duration = 0;
+    }
+}
+
+const sw2 = new StopWatchClass()

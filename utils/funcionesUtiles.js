@@ -144,6 +144,39 @@ const checkRut = rut => {
     return true
 }
 
+
+function generateDvRut(rut) {
+    const formatRut = (rut) => {
+      const dv = rut.at(-1)
+      let withoutdv = rut.slice(0, -1)
+      const array = []; // El array vacío que queremos rellenar
+  
+      while (withoutdv.length > 0) {
+        //Le quito los ultimos 3
+        const grupo = withoutdv.slice(-3);
+        //Se los agrego al inicio del array
+        array.unshift(grupo);
+        //Le digo que el text ahora partida desde el inicio hasta el final menos los ultimos 3
+        withoutdv = withoutdv.slice(0, -3);
+      }
+      return array.join('.') + "-" + dv
+    }
+  
+    const cleanRut = rut.replace(/\D/g, "") // Eliminar puntos y guiones
+    const reverseRut = cleanRut.split("").reverse().join("")
+  
+    let factor = 2;
+    let suma = 0;
+  
+    for (let i = 0; i < reverseRut.length; i++) {
+      suma += parseInt(reverseRut[i]) * factor;
+      factor = factor >= 7 ? 2 : factor + 1;
+    }
+    let dv = 11 - (suma % 11);
+    dv = dv === 10 ? 'K' : dv === 11 ? '0' : dv
+  
+    return formatRut(cleanRut + dv)
+  }
 //Si quiero hacer una funcion que busque el indice de la suma de 2 numeros con un target pero solo 1 bucle
 const nums = [1, 5, 7, 10, 3, 12]
 

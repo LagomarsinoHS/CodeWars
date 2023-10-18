@@ -2450,3 +2450,55 @@ function permutations(string) {
     return opciones;
 }
 console.log(permutations('abc'))
+console.log('-----------------------------');
+
+//Common array elements (6 Kyu)
+function common(a1, a2, a3) {
+    const countReps = arr => arr.reduce((acc, ele) => {
+        acc.set(ele, (acc.get(ele) || 0) + 1);
+        return acc
+    }, new Map())
+    let result = 0;
+
+    const a2Map = countReps(a2)
+    const a3Map = countReps(a3)
+
+    for (const num of a1) {
+        if (a2Map.has(num) && a3Map.has(num)) {
+            result += num
+            a2Map.set(num, a2Map.get(num) - 1)
+            a3Map.set(num, a3Map.get(num) - 1)
+        }
+    }
+
+    return result
+}
+
+function common2(a1, a2, a3) {
+    return a1.reduce((acc, ele) => {
+        if (a2.includes(ele) && a3.includes(ele)) {
+            acc += ele
+            a2.splice(a2.indexOf(ele), 1)
+            a3.splice(a3.indexOf(ele), 1)
+        }
+        return acc
+    }, 0)
+}
+//console.log(common([1, 2, 3], [5, 3, 2], [7, 3, 2]))
+console.log(common([1, 2, 2, 3], [5, 3, 2, 2], [7, 3, 2, 2]))
+console.log('-----------------------------');
+
+//Explode (7 Kyu)
+function explode(x) {
+    const [a, b] = x
+
+    if (typeof a === 'number' && typeof b === 'number') {
+        return Array.from({ length: a + b }).fill(x)
+    } else if (typeof a === 'number') {
+        return Array.from({ length: a }).fill(x)
+    } else if (typeof b === 'number') {
+        return Array.from({ length: b }).fill(x)
+    }
+    return "Void!"
+}
+console.log(explode(["a", 0]))

@@ -2502,3 +2502,38 @@ function explode(x) {
     return "Void!"
 }
 console.log(explode(["a", 0]))
+console.log('-----------------------------');
+
+function solver(arr) {
+    const result = []
+    arr.forEach((num, idx) => idx === arr.lastIndexOf(num) && result.push(num))
+    return result
+}
+
+
+function slicesToName(n) {
+    if (typeof n !== 'number' || n <= 1) return null
+    const resto = Math.floor(n / 2)
+    const sandwich = resto * 2
+    const bread = n - sandwich
+    return sandwich + bread
+}
+
+function nameToSlices(name) {
+    let res = 0
+    name.split(" ").forEach((x, idx) => {
+        if (idx === 0 && x !== 'bread') return null
+        x === 'bread' ? res++ : res += 2
+    })
+    return res
+}
+console.log(slicesToName(11))
+/*
+  assert.equal(slicesToName(false), null)
+  assert.equal(slicesToName(1), null)
+  assert.equal(slicesToName(-2), null)
+  assert.equal(slicesToName('bread'), null)
+  assert.equal(slicesToName(2), 'sandwich')
+  assert.equal(slicesToName(3), 'bread sandwich')
+  assert.equal(slicesToName(11),'bread sandwich sandwich sandwich sandwich sandwich')
+*/

@@ -1,8 +1,7 @@
 'use strict'
 
 
-const codeWars = {
-    //Nombre Ejercicio: Does my number look big in this?
+const codeWars={
     narcissistic(value) {
         // Code me to return true or false
         let largoNum = value % 10
@@ -14,7 +13,7 @@ const codeWars = {
                 return acc += Math.pow(num, largoNum)
             }, 0)
             return valor == value ? true : false
-
+    
         } else if (largoNum == 2) {
             valor = numeros.reduce((acc, num) => {
                 return acc += Math.pow(num, largoNum)
@@ -62,538 +61,690 @@ const codeWars = {
             }, 0)
             return valor == value ? true : false
         }
-    },
-    narcissistic2(value) {
-        const arrayOfNums = value.toString().split("")
-        const numLength = arrayOfNums.length
-        return arrayOfNums.reduce((acc, num) => acc + (Math.pow(parseInt(num), numLength)), 0) === value
-    },
-    //console.log(narcissistic(9474));
+    }
+}
 
-    //Nombre Ejercicio: Highest and Lowest
-    highAndLow(numbers) {
-        let numero = numbers.split(" ")
-        console.log(numero);
-        let result = Math.max(...numero) + " " + Math.min(...numero)
-        return result
-    },
-    highAndLow2(numbers) {
-        let numeros = numbers.split(" ").sort((a, b) => +b - +a)
-        return `${numeros[0]}  ${numeros.at(-1)}`
-    },
-    //console.log(highAndLow("4 5 29 54 4 0 -214 542 -64 1 -3 6 -6"));
 
-    //Nombre Ejercicio: Friend or Foe?
-    friend(friends) {
-        //your code here
-        return friends.filter(friend => friend.length == 4)
-    },
-    //console.log(friend(["Ryan", "Kieran", "Mark"]));
+//Nombre Ejercicio: Does my number look big in this?
+function narcissistic(value) {
+    // Code me to return true or false
+    let largoNum = value % 10
+    let numeros = value.toString().split("").map(e => parseInt(e))
+    let valor = 0;
+    console.log(numeros)
+    if (largoNum == 1) {
+        valor = numeros.reduce((acc, num) => {
+            return acc += Math.pow(num, largoNum)
+        }, 0)
+        return valor == value ? true : false
 
-    //Nombre Ejercicio: Two to One
-    longest(s1, s2) {
-        let reg = /[a-z]/i
-        let s3 = [...s1, ...s2]
-        let arrayFinal = []
-        for (let pal of s1 + s2) {
-            if (reg.test(pal) && !arrayFinal.includes(pal)) {
-                arrayFinal.push(pal)
-            }
+    } else if (largoNum == 2) {
+        valor = numeros.reduce((acc, num) => {
+            return acc += Math.pow(num, largoNum)
+        }, 0)
+        return valor == value ? true : false
+    } else if (largoNum == 3) {
+        valor = numeros.reduce((acc, num) => {
+            return acc += Math.pow(num, largoNum)
+        }, 0)
+        return valor == value ? true : false
+    }
+    else if (largoNum == 4) {
+        valor = numeros.reduce((acc, num) => {
+            return acc += Math.pow(num, largoNum)
+        }, 0)
+        return valor == value ? true : false
+    }
+    else if (largoNum == 5) {
+        valor = numeros.reduce((acc, num) => {
+            return acc += Math.pow(num, largoNum)
+        }, 0)
+        return valor == value ? true : false
+    }
+    else if (largoNum == 6) {
+        valor = numeros.reduce((acc, num) => {
+            return acc += Math.pow(num, largoNum)
+        }, 0)
+        return valor == value ? true : false
+    }
+    else if (largoNum == 7) {
+        valor = numeros.reduce((acc, num) => {
+            return acc += Math.pow(num, largoNum)
+        }, 0)
+        return valor == value ? true : false
+    }
+    else if (largoNum == 8) {
+        valor = numeros.reduce((acc, num) => {
+            return acc += Math.pow(num, largoNum)
+        }, 0)
+        return valor == value ? true : false
+    }
+    else if (largoNum == 9) {
+        valor = numeros.reduce((acc, num) => {
+            return acc += Math.pow(num, largoNum)
+        }, 0)
+        return valor == value ? true : false
+    }
+}
+
+function narcissistic2(value) {
+    const arrayOfNums = value.toString().split("")
+    const numLength = arrayOfNums.length
+    return arrayOfNums.reduce((acc, num) => acc + (Math.pow(parseInt(num), numLength)), 0) === value
+}
+console.log("narcissistic")
+console.log(narcissistic(9474));
+console.log('-----------------------------');
+
+//Nombre Ejercicio: Highest and Lowest
+function highAndLow(numbers) {
+    let numero = numbers.split(" ")
+    console.log(numero);
+    let result = Math.max(...numero) + " " + Math.min(...numero)
+    return result
+}
+
+function highAndLow2(numbers) {
+    let numeros = numbers.split(" ").sort((a, b) => +b - +a)
+    return `${numeros[0]}  ${numeros.at(-1)}`
+}
+console.log("highAndLow")
+console.log(highAndLow("4 5 29 54 4 0 -214 542 -64 1 -3 6 -6"));
+console.log('-----------------------------');
+
+//Nombre Ejercicio: Friend or Foe?
+function friend(friends) {
+    //your code here
+    return friends.filter(friend => friend.length == 4)
+
+}
+console.log("friend")
+console.log(friend(["Ryan", "Kieran", "Mark"]));
+console.log('-----------------------------');
+
+//Nombre Ejercicio: Two to One
+function longest(s1, s2) {
+    let reg = /[a-z]/i
+    let s3 = [...s1, ...s2]
+    let arrayFinal = []
+    for (let pal of s1 + s2) {
+        if (reg.test(pal) && !arrayFinal.includes(pal)) {
+            arrayFinal.push(pal)
         }
-        return arrayFinal.sort().join("")
-    },
-    //console.log(longest("xyaabbbccccdefww", "xxxxyyyyabklmopq"))
+    }
+    return arrayFinal.sort().join("")
+}
+console.log("longest")
+console.log(longest("xyaabbbccccdefww", "xxxxyyyyabklmopq"))
+console.log('-----------------------------');
 
-    //Nombre Ejercicio: Beginner Series #3 Sum of Numbers
-    getSum(a, b) {
-        if (a == b) return a
-        let max = Math.max(a, b)
-        let min = Math.min(a, b)
-        let total = 0
-        for (let i = min; i <= max; i++) {
-            total += i
+//Nombre Ejercicio: Beginner Series #3 Sum of Numbers
+function getSum(a, b) {
+    if (a == b) return a
+    let max = Math.max(a, b)
+    let min = Math.min(a, b)
+    let total = 0
+    for (let i = min; i <= max; i++) {
+        total += i
+    }
+    return total
+}
+console.log("getSum")
+console.log(getSum(5, 1))
+console.log('-----------------------------');
+
+//Nombre Ejercicio: Sort the odd (6 kyu)
+function sortArray(array) {
+    let arrImparOrdenado = [...array].filter(e => e % 2 !== 0).sort((a, b) => a - b)
+    return array.map(e => {
+        if (e % 2 !== 0) {
+            e = arrImparOrdenado.shift()
         }
-        return total
-    },
-    //console.log(getSum(5, 1))
+        return e
+    })
+}
+console.log("sortArray")
+console.log(sortArray([5, 3, 2, 8, 1, 4])) //[1, 3, 2, 8, 5, 4]
+console.log("------------------------")
 
-    //Nombre Ejercicio: Sort the odd (6 kyu)
-    sortArray(array) {
-        let arrImparOrdenado = [...array].filter(e => e % 2 !== 0).sort((a, b) => a - b)
-        return array.map(e => {
-            if (e % 2 !== 0) {
-                e = arrImparOrdenado.shift()
-            }
-            return e
-        })
-    },
-    //console.log(sortArray([5, 3, 2, 8, 1, 4])) //[1, 3, 2, 8, 5, 4]
-
-    arrayDiff(a, b) {
-        //return a.filter(ele=>b.includes(ele)==false)
-        let arr = []
-        for (let numa of a) {
-            if (!b.includes(numa)) {
-                arr.push(numa)
-            }
+function arrayDiff(a, b) {
+    //return a.filter(ele=>b.includes(ele)==false)
+    let arr = []
+    for (let numa of a) {
+        if (!b.includes(numa)) {
+            arr.push(numa)
         }
-        return arr
-    },
-    //console.log(arrayDiff([1, 2, 2, 2, 3], [2])) //[1,3]
+    }
+    return arr
+}
+console.log("arrayDiff")
+console.log(arrayDiff([1, 2, 2, 2, 3], [2])) //[1,3]
+console.log(arrayDiff([-6, -19, -6, 4, 0], [0, -6, -19]))
+console.log("------------------------")
 
-    //Ejercicio Nombre: Unique In Order
-    uniqueInOrder(iterable) {
-        //Transformo el string a un arreglo de letras, de esta manera puedo usar el filter
-        iterable = typeof iterable === 'string' ? iterable.split('') : iterable;
-        return iterable.filter(function (e, i, arr) {
-            return e !== arr[i + 1];
-        });
-    },
-    //console.log(uniqueInOrder('AAAABBBCCDAABBB')) //['A','B','C','D','A','B']
+//Ejercicio Nombre: Unique In Order
+const uniqueInOrder = function (iterable) {
+    //Transformo el string a un arreglo de letras, de esta manera puedo usar el filter
+    iterable = typeof iterable === 'string' ? iterable.split('') : iterable;
+    return iterable.filter(function (e, i, arr) {
+        return e !== arr[i + 1];
+    });
+}
+console.log("uniqueInOrder")
+console.log(uniqueInOrder('AAAABBBCCDAABBB')) //['A','B','C','D','A','B']
+console.log("---------------------")
 
-    //Nombre Ejercicio: Turkish Numbers, 0-99
-    getTurkishNumber(num) {
-        let largoNum = num.toString().length
-        let numTurko = {
-            0: "sıfır", 1: "bir", 2: "iki", 3: "üç", 4: "dört", 5: "beş", 6: "altı", 7: "yedi", 8: "sekiz", 9: "dokuz", 10: "on", 20: "yirmi", 30: "otuz", 40: "kırk", 50: "elli", 60: "altmış", 70: "yetmiş", 80: "seksen", 90: "doksan"
-        }
-        if (num in numTurko) {
-            return numTurko[num]
-        } else {
-            let str = ""
-            str += numTurko[num.toString()[0] + 0] + " " + numTurko[num.toString()[1]]
-            return str
-        }
-    },
-    //console.log(getTurkishNumber(16))
-
-    //Nombre Ejercicio: Filling an array (part 2)
-    squares(n) {
-        let arr = []
-        for (let index = 1; index <= n; index++) {
-            arr.push(index * index)
-        }
-        return arr
-    },
-    //console.log(squares(2));
-
-    //Generate range of integers (8 kyu)
-    range(n, start, step) {
-        let arr = []
-        for (let i = 1; i <= n; i++) {
-            arr.push(start)
-            start += step
-        }
-        return arr
-    },
-    //console.log(range(3, 1, 1));
-
-    random(n, min, max) {
-        let arr = []
-        for (let i = 1; i <= n; i++) {
-            arr.push(Math.floor(Math.random() * ((max + 1) - min) + min))
-        }
-        return arr
-    },
-    //console.log(random(4, 5, 10))
-
-    //Nombre Ejercicio: String ends with
-    solution(str, ending) {
-        let subString = str.substr((str.length - ending.length), ending.length)
-        //return subString == ending ? true : false
-        return str.endsWith(ending) ? true : false
-    },
-    //console.log(solution('abcdfghuyddfs', 'ddfs'))
-
-    //Nombre Ejercicio: Count characters in your string
-    count(string) {
-        let arrCadena = string.split("")
-        let objeto = {}
-        for (let letra of arrCadena) {
-            if (!Object.keys(objeto).includes(letra) && letra != " " && letra != ",") {
-                objeto[letra] = 1
-            } else if (Object.keys(objeto).includes(letra) && letra != " " && letra != ",") {
-                objeto[letra]++
-            }
-        }
-        return objeto
-    },
-    count2(string) {
-        return string.split("").reduce((acc, letra) => {
-            if (letra != " " && letra != ",") acc[letra] ? acc[letra]++ : acc[letra] = 1
-            return acc
-        }, {})
-    },
-    //console.log(count2('hola como estas, yo bien'))
-
-    //Nombre Ejercicio: Create Phone Number (6 kyu)
-    createPhoneNumber(numbers) {
-        /*  console.log(numbers.join(""))
-         let number = "("
-         for (let i = 0; i < 3; i++) {
-             number += numbers[i]
-         }
-         number += ") "
-         for (let i = 3; i < 6; i++) {
-             number += numbers[i]
-         }
-         number += "-"
-         for (let i = 6; i < numbers.length; i++) {
-             number += numbers[i]
-         }
-         return number */
-
-        /*  let nume = numbers.join("")
-         return "(" + nume.slice(0, 3) + ") " + nume.slice(3, 6) + "-" + nume.slice(6) */
-
-        return numbers.reduce((acc, num) => {
-            return acc.replace("x", num)
-        }, "(xxx) xxx-xxxx")
-    },
-    //console.log(createPhoneNumber([1, 2, 3, 4, 5, 6, 7, 8, 9, 0]))
-
-    //Nombre Ejercicio: Detect Pangram (6 kyu)
-    isPangram(string) {
-        /*  let rege = /[a-z]/i
-         let str = new Set([...string].map(e=>e.toLowerCase()).filter(e => rege.test(e)))
-         console.log([...str].length)
-         console.log([...str])
-         return [...str].length == 26 ? true : false */
-
-        return "abcdefghijklmnopqrstuvwxyz".split("").every(letra => string.includes(letra))
-    },
-    //console.log(isPangram("The quick brown fox jumps over the lazy dog."))
-
-    //Nombre Ejercicio: Replace With Alphabet Position (6kyu)
-    alphabetPosition(text) {
-        let alf = "0abcdefghijklmnopqrstuvwxyz"
-        let arr = text.toLowerCase().split("")
-        let res = []
-        arr.forEach(e => {
-            if (alf.includes(e)) {
-                let pos = alf.indexOf(e)
-                res.push(pos)
-            }
-        })
-        return res.join(" ")
-    },
-    alphabetPosition2(text) {
-        const letters = 'abcdefghijklmnopqrstuvwxyz';
-
-        return text.toLowerCase()
-            .split('')
-            .filter(t => letters.includes(t))
-            .map(t => letters.indexOf(t) + 1)
-            .join(' ');
-    },
-    //console.log(alphabetPosition2("The sunset sets at twelve o' clock."))
-
-    //Ejercicio Name: Find all occurrences of an element in an array
-    findAll(array, n) {
-        /* let arr = []
-        array.forEach((ele,index)=>ele==n?arr.push(index):0)
-        return arr */
-        //Con reduce
-        return array.reduce((acc, ele, index) => {
-            if (ele == n) acc.push(index)
-            return acc
-
-        }, [])
-        //Ojo con este
-        /* array.reduce((pre, val, idx) => val === n ? [...pre, idx] : pre, []); */
-    },
-    //    console.log(findAll([6, 9, 3, 4, 3, 82, 11], 3)) //->2,4
-
-    duplicateCount(text) {
-        let res = text.split("").reduce((acc, letra) => {
-            acc[letra] ? acc[letra]++ : acc[letra] = 1
-            return acc
-        }, {})
-        let count = 0
-        for (let i in res) {
-            if (res[i] > 1) count++
-        }
-        return count
-    },
-    //console.log(duplicateCount("aabbcde"))
-
-    //Nombre Ejercicio: Find the odd int
-    findOdd(arr) {
-        let a = arr.reduce((acc, ele) => {
-            acc[ele] ? acc[ele]++ : acc[ele] = 1
-            return acc
-        }, {})
-        for (let item in a) {
-            if (a[item] % 2 == 1) return Number(item)
-        }
-    },
-    //console.log(findOdd([20, 1, -1, 2, -2, 3, 3, 5, 5, 1, 2, 4, 20, 4, -1, -2, 5]))
-
-    //Nombre Ejercicio: Find the missing term in an Arithmetic Progression (6kyu)
-    findMissing(list) {
-        let listLen = list.length;
-        let iter = (list[listLen - 1] - list[0]) / listLen;
-        for (let i = 0; i < listLen; i++) {
-            let next = list[i] + iter
-            if (next != list[i + 1]) {
-                return next;
-            }
-        }
-    },
-    //console.log(findMissing([1, 3, 5, 9, 11]))
-
-    songDecoder(song) {
-        let regexp = /wub/gi
-        let res = song.replace(regexp, " ")
-        if (song.includes("WUBWUB")) {
-            res = res.split("  ").join("")
-            return res
-        } else {
-            return res.trim()
-        }
-    },
-    //console.log(songDecoder("AWUBBWUBC"))
-
-    //Nombre Ejercicio: Greed is Good (5 Kyu)
-    score(dice) {
-        let uno = 0, dos = 0, tres = 0, cuatro = 0, cinco = 0, seis = 0
-        let total = 0
-        dice.forEach(e => {
-            switch (e) {
-                case 1: uno++
-                    break;
-                case 2: dos++
-                    break;
-                case 3: tres++
-                    break;
-                case 4: cuatro++
-                    break;
-                case 5: cinco++
-                    break;
-                case 6: seis++
-                    break;
-            }
-        })
-        if (uno > 2) total += 1000, uno -= 3
-        if (seis > 2) total += 600
-        if (cinco > 2) total += 500, cinco -= 3
-        if (cuatro > 2) total += 400
-        if (tres > 2) total += 300
-        if (dos > 2) total += 200
-        total += (100 * uno)
-        total += (50 * cinco)
-        return total
-    },
-    //console.log(score([1, 1, 1, 1, 2]))
-
-    //Ejercicio Nombre: Find The Parity Outlier (6 kyu)
-    findOutlier(integers) {
-        let par = [], impares = []
-        integers.filter(e => e % 2 == 0 ? par.push(e) : impares.push(e))
-        return par.length == 1 ? par[0] : impares[0]
-    },
-    //console.log(findOutlier([2, 4, 0, 100, 4, 11, 2602, 36]))
-
-    //Nombre Ejercicio N-th Power (8 kyu)
-    index(array, n) {
-        if (array.length - 1 < n) return -1
-
-        let res = array.map((e, i) => {
-            if (i == n) return e = Math.pow(e, n)
-        }).filter(e => e).join("")
-        return Number(res)
-
-        //return array.length - 1 < n ? -1 : Math.pow(array[n], n)
-        //return array[n] **n || -1
-    },
-    //console.log(index([1, 2, 3, 4], 2))
-
-    //Nombre Ejercicio: Can we divide it? (8kyu)
-    isDivideBy(number, a, b) {
-        return number % a == 0 && number % b == 0 ? true : false
-    },
-
-    //Ejercicio Name: Stringing me along (6 kyu)
-    createMessage(str) {
-        if (!this.str) this.str = "";
-        if (str) {
-            this.str += str + " ";
-            return createMessage;
-        } else {
-            return this.str;
-        }
-    },
-    //console.log(createMessage("Hello")("World!")("how")("are")("you?")())
-
-    //Ejercicio Name: Middle me (7kyu)
-    middleMe(N, X, Y) {
+//Nombre Ejercicio: Turkish Numbers, 0-99
+const getTurkishNumber = (num) => {
+    let largoNum = num.toString().length
+    let numTurko = {
+        0: "sıfır", 1: "bir", 2: "iki", 3: "üç", 4: "dört", 5: "beş", 6: "altı", 7: "yedi", 8: "sekiz", 9: "dokuz", 10: "on", 20: "yirmi", 30: "otuz", 40: "kırk", 50: "elli", 60: "altmış", 70: "yetmiş", 80: "seksen", 90: "doksan"
+    }
+    if (num in numTurko) {
+        return numTurko[num]
+    } else {
         let str = ""
-        /*     if (N % 2 != 0) return X
-            for (let i = 0; i <= N; i++) {
-                if (i == N / 2) str += X
-                else str += Y
-            }
-            return str*/
-        str = Y.repeat(N / 2)
-        return N % 2 != 0 ? X : str + X + str
-    },
-    //console.log(middleMe(19, 'z', '#'))
+        str += numTurko[num.toString()[0] + 0] + " " + numTurko[num.toString()[1]]
+        return str
+    }
+}
+console.log("getTurkishNumber")
+console.log(getTurkishNumber(16))
+console.log("---------------------------")
 
-    sumStrings(a, b) {
-        let res = []
-        let largo = a.length
+//Nombre Ejercicio: Filling an array (part 2)
+const squares = n => {
+    let arr = []
+    for (let index = 1; index <= n; index++) {
+        arr.push(index * index)
+    }
+    return arr
+}
+console.log("squares");
+console.log(squares(2));
+console.log('-----------------------------');
 
-        for (let i = 0; i < largo; i++) {
-            let sum;
-            sum = (Number(a[i]) + Number(b[i])).toString()
-            res.push(sum)
+//Generate range of integers (8 kyu)
+const range = (n, start, step) => {
+    let arr = []
+    for (let i = 1; i <= n; i++) {
+        arr.push(start)
+        start += step
+    }
+    return arr
+}
+console.log("range");
+console.log(range(3, 1, 1));
+console.log('-----------------------------');
+
+const random = (n, min, max) => {
+    let arr = []
+    for (let i = 1; i <= n; i++) {
+        arr.push(Math.floor(Math.random() * ((max + 1) - min) + min))
+    }
+    return arr
+}
+console.log("Squares")
+console.log(squares(5))
+console.log("Range")
+console.log(range(6, 3, 2))
+console.log("Random")
+console.log(random(4, 5, 10))
+console.log("---------------------------")
+
+//Nombre Ejercicio: String ends with
+function solution(str, ending) {
+    let subString = str.substr((str.length - ending.length), ending.length)
+    //return subString == ending ? true : false
+    return str.endsWith(ending) ? true : false
+}
+console.log("solution")
+console.log(solution('abc', 'bc'))
+console.log(solution('abcdfghuyddfs', 'ddfs'))
+console.log("------------------------")
+
+//Nombre Ejercicio: Count characters in your string
+function count(string) {
+    // The function code should be here
+    let arrCadena = string.split("")
+    let objeto = {}
+    for (let letra of arrCadena) {
+        if (!Object.keys(objeto).includes(letra) && letra != " " && letra != ",") {
+            objeto[letra] = 1
+        } else if (Object.keys(objeto).includes(letra) && letra != " " && letra != ",") {
+            objeto[letra]++
         }
-        return res.join("")
-    },
-    //console.log(sumStrings("123", "456"))
+    }
+    return objeto
+}
+function count2(string) {
+    return string.split("").reduce((acc, letra) => {
+        if (letra != " " && letra != ",") acc[letra] ? acc[letra]++ : acc[letra] = 1
+        return acc
+    }, {})
+}
+console.log("Count");
+console.log(count2('hola como estas, yo bien'))
+console.log("-----------------------")
 
-    //Nombre Ej: Simple consecutive pairs (7kyu)
-    pairs(ar) {
-        let count = 0;
-        for (let i = 0; i < ar.length; i += 2) {
-            if (ar[i] + 1 == ar[i + 1] || ar[i] - 1 == ar[i + 1]) count++
+//Nombre Ejercicio: Create Phone Number (6 kyu)
+function createPhoneNumber(numbers) {
+    /*  console.log(numbers.join(""))
+     let number = "("
+     for (let i = 0; i < 3; i++) {
+         number += numbers[i]
+     }
+     number += ") "
+     for (let i = 3; i < 6; i++) {
+         number += numbers[i]
+     }
+     number += "-"
+     for (let i = 6; i < numbers.length; i++) {
+         number += numbers[i]
+     }
+     return number */
+
+    /*  let nume = numbers.join("")
+     return "(" + nume.slice(0, 3) + ") " + nume.slice(3, 6) + "-" + nume.slice(6) */
+
+    return numbers.reduce((acc, num) => {
+        return acc.replace("x", num)
+    }, "(xxx) xxx-xxxx")
+}
+console.log("Create Phone Number");
+console.log(createPhoneNumber([1, 2, 3, 4, 5, 6, 7, 8, 9, 0]))
+console.log("-----------------------")
+
+//Nombre Ejercicio: Detect Pangram (6 kyu)
+function isPangram(string) {
+    /*  let rege = /[a-z]/i
+     let str = new Set([...string].map(e=>e.toLowerCase()).filter(e => rege.test(e)))
+     console.log([...str].length)
+     console.log([...str])
+     return [...str].length == 26 ? true : false */
+
+    return "abcdefghijklmnopqrstuvwxyz".split("").every(letra => string.includes(letra))
+}
+console.log("Is Pangram");
+console.log(isPangram("The quick brown fox jumps over the lazy dog."))
+//console.log(isPangram("ABCD45EFGH,IJK,LMNOPQR56STUVW3XYZ"))
+console.log("----------------------------------------------")
+
+//Nombre Ejercicio: Replace With Alphabet Position (6kyu)
+function alphabetPosition(text) {
+    let alf = "0abcdefghijklmnopqrstuvwxyz"
+    let arr = text.toLowerCase().split("")
+    let res = []
+    arr.forEach(e => {
+        if (alf.includes(e)) {
+            let pos = alf.indexOf(e)
+            res.push(pos)
         }
-        return count
-    },
-    pairs2(ar, count = 0) {
-        for (let i = 0; i < ar.length; i += 2) {
-            Math.abs(ar[i] - ar[i + 1]) == 1 ? count++ : count
+    })
+    return res.join(" ")
+}
+//Otra Forma y mejor
+function alphabetPosition2(text) {
+    const letters = 'abcdefghijklmnopqrstuvwxyz';
+
+    return text.toLowerCase()
+        .split('')
+        .filter(t => letters.includes(t))
+        .map(t => letters.indexOf(t) + 1)
+        .join(' ');
+}
+console.log("alphabetPosition")
+console.log(alphabetPosition2("The sunset sets at twelve o' clock."))
+console.log("------------------------------")
+
+//Ejercicio Name: Find all occurrences of an element in an array
+const findAll = (array, n) => {
+    /* let arr = []
+    array.forEach((ele,index)=>ele==n?arr.push(index):0)
+    return arr */
+    //Con reduce
+    return array.reduce((acc, ele, index) => {
+        if (ele == n) acc.push(index)
+        return acc
+
+    }, [])
+    //Ojo con este
+    /* array.reduce((pre, val, idx) => val === n ? [...pre, idx] : pre, []); */
+}
+console.log("findAll");
+console.log(findAll([6, 9, 3, 4, 3, 82, 11], 3)) //->2,4
+console.log("------------------------")
+
+function duplicateCount(text) {
+    let res = text.split("").reduce((acc, letra) => {
+        acc[letra] ? acc[letra]++ : acc[letra] = 1
+        return acc
+    }, {})
+    let count = 0
+    for (let i in res) {
+        if (res[i] > 1) count++
+    }
+    return count
+}
+console.log("duplicateCount");
+console.log(duplicateCount("aabbcde"))
+console.log("----------------")
+
+//Nombre Ejercicio: Find the odd int
+const findOdd = (arr) => {
+    let a = arr.reduce((acc, ele) => {
+        acc[ele] ? acc[ele]++ : acc[ele] = 1
+        return acc
+    }, {})
+    for (let item in a) {
+        if (a[item] % 2 == 1) return Number(item)
+    }
+}
+console.log("findOdd");
+console.log(findOdd([20, 1, -1, 2, -2, 3, 3, 5, 5, 1, 2, 4, 20, 4, -1, -2, 5]))
+console.log("---------------------------")
+
+//Nombre Ejercicio: Find the missing term in an Arithmetic Progression (6kyu)
+const findMissing = (list) => {
+    let listLen = list.length;
+    let iter = (list[listLen - 1] - list[0]) / listLen;
+    for (let i = 0; i < listLen; i++) {
+        let next = list[i] + iter
+        if (next != list[i + 1]) {
+            return next;
         }
-        return count
-    },
-    //console.log(pairs([21, 20, 22, 40, 39, -56, 30, -55, 95, 94]))
+    }
+}
+console.log("findMissing");
+console.log(findMissing([1, 3, 5, 9, 11]))
+console.log("---------------------------");
 
-    //Ejercicio Name: Moving Zeros To The End (5kyu)
-    moveZeros(arr) {
-        /*    let res = arr.filter(e => e !== 0)
-           console.log(res);
-           let cero = arr.length - res.length
-           for (let i = 1; i <= cero; i++) {
-               res.push(0)
-           }
-           return res */
-        return arr.filter(e => e !== 0).concat(arr.filter(e => e === 0))
-    },
-    //console.log(moveZeros([1, 2, 0, 1, false, true, 0, 1, 0, 3, 0, 1]));
+function songDecoder(song) {
+    let regexp = /wub/gi
+    let res = song.replace(regexp, " ")
+    if (song.includes("WUBWUB")) {
+        res = res.split("  ").join("")
+        return res
+    } else {
+        return res.trim()
+    }
+}
+console.log("songDecoder");
+console.log(songDecoder("AWUBBWUBC"))
+console.log("------------------------")
 
-    scramble(str1, str2) {
-        for (let i = 0; i < str2.length; i++) {
-            if (str1.includes(str2[i])) {
-                console.log(`letra ${str2[i]} si se encontro`);
-                str1 = str1.replace(str2[i], "")
-            } else {
-                console.log(`letra ${str2[i]} NO se encontro`);
-                return false
-            }
+
+//Nombre Ejercicio: Greed is Good (5 Kyu)
+function score(dice) {
+    let uno = 0, dos = 0, tres = 0, cuatro = 0, cinco = 0, seis = 0
+    let total = 0
+    dice.forEach(e => {
+        switch (e) {
+            case 1: uno++
+                break;
+            case 2: dos++
+                break;
+            case 3: tres++
+                break;
+            case 4: cuatro++
+                break;
+            case 5: cinco++
+                break;
+            case 6: seis++
+                break;
         }
-        return true
-    },
-    //console.log(scramble('javsaripts', 'javascript'));
+    })
+    if (uno > 2) total += 1000, uno -= 3
+    if (seis > 2) total += 600
+    if (cinco > 2) total += 500, cinco -= 3
+    if (cuatro > 2) total += 400
+    if (tres > 2) total += 300
+    if (dos > 2) total += 200
+    total += (100 * uno)
+    total += (50 * cinco)
+    return total
+}
+console.log("score");
+console.log(score([1, 1, 1, 1, 2]))
+console.log('-----------------------------');
 
-    //Ejercicio Nombre: Ranking System(6 kyu)
-    rankings(arr) {
-        console.log(arr)
-        let rank = [...arr].sort((a, b) => b - a)
-        return arr.map(e => e = rank.indexOf(e) + 1 + "°")
-    },
-    //console.log(rankings([3, 4, 1, 2, 5]))
+//Ejercicio Nombre: Find The Parity Outlier (6 kyu)
+function findOutlier(integers) {
+    let par = [], impares = []
+    integers.filter(e => e % 2 == 0 ? par.push(e) : impares.push(e))
+    return par.length == 1 ? par[0] : impares[0]
+}
+console.log("findOutlier");
+console.log(findOutlier([2, 4, 0, 100, 4, 11, 2602, 36]))
+console.log("--------------------------")
 
-    rot13(str) {
-        console.log(str);
-        let alpma = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-        let alpmi = "abcdefghijklmnopqrstuvwxyz"
-        let cont = 0;
-        return [...str].map(e => {
-            if (/[A-Z]/.test(e)) {
-                if (alpma.indexOf(e) + 13 >= 26) {
+//Nombre Ejercicio N-th Power (8 kyu)
+function index(array, n) {
+    if (array.length - 1 < n) return -1
 
-                    cont = (alpma.indexOf(e) + 13) - 26
-                    return e = alpma[cont]
-                } else return e = alpma[alpma.indexOf(e) + 13]
-            }
-            else if (/[a-z]/.test(e)) {
-                if (alpmi.indexOf(e) + 13 >= 26) {
-                    cont = (alpmi.indexOf(e) + 13) - 26
-                    return e = alpmi[cont]
-                } else return e = alpmi[alpmi.indexOf(e) + 13]
-            } else return e
-        }).join("")
-    },
-    //console.log(rot13("EBG13 rknzcyr."));// "ROT13 example.";
+    let res = array.map((e, i) => {
+        if (i == n) return e = Math.pow(e, n)
+    }).filter(e => e).join("")
+    return Number(res)
 
-    //Ejercicio Name: Where is my parent!? (6 kyu)
-    findChildren(dancingBrigade) {
-        let orden = [...dancingBrigade].sort()
-        let size = orden.length
-        let min = orden.filter(e => /[a-z]/.test(e))
-        min.map(e => {
-            let pos = orden.indexOf(e.toUpperCase())
-            orden.splice(pos + 1, 0, e)
-        })
-        orden.length = size
-        console.log(orden.length);
-        return orden.join("")
-    },
-    findChildren2(dancingBrigade) {
-        return dancingBrigade
-            .split('')
-            .sort((a, b) => a.toLowerCase().localeCompare(b.toLowerCase()) || b.localeCompare(a))
-            .join('')
-    },
-    //console.log(findChildren2("beeeEBb"));
+    //return array.length - 1 < n ? -1 : Math.pow(array[n], n)
+    //return array[n] **n || -1
+}
+console.log("index");
+console.log(index([1, 2, 3, 4], 2))
+console.log("----------------------")
 
-    //Ejercicio Name: Is he gonna survive? (8 kyu)
-    hero(bullets, dragons) {
-        return bullets / 2 >= dragons ? true : false
-    },
-    //console.log(hero(10, 5))
+//Nombre Ejercicio: Can we divide it? (8kyu)
+function isDivideBy(number, a, b) {
+    return number % a == 0 && number % b == 0 ? true : false
+}
+console.log("isDivideBy");
+console.log('-----------------------------');
 
+//Ejercicio Name: Stringing me along (6 kyu)
+/* 
+function createMessage(str) {
+    if (!this.str) this.str = "";
+    if (str) {
+        this.str += str + " ";
+        return createMessage;
+    } else {
+        return this.str;
+    }
+}
+console.log(createMessage("Hello")("World!")("how")("are")("you?")())
+*/
+console.log("----------------------")
 
-    //Ejercicio Name: GCD sum (7 kyu)
-    solve(sum, gcd) {
-        if (sum % gcd !== 0) return -1
-        return [gcd, sum - gcd]
-    },
-    solve2(str) {
-        console.log(str)
-        let str2 = str.replace(/[A-z]/g, "-").split("-")
-        return Math.max(...str2)
-    },
-    //console.log(solve(6, 3))
-
-    //Ejercicio Name: Say Me Please Operations (7 kyu)
-    sayMeOperations(str) {
-        console.log(str);
-        let str2 = str.split(" ").map(e => Number(e))
-        let res = "";
-        for (let i = 0; i < str2.length; i++) {
-            let n0 = str2[i],
-                n1 = str2[i + 1],
-                n2 = str2[i + 2]
-
-            if (n2 || n2 === 0) {
-                if (n0 + n1 === n2) res += "addition, "
-                else if (n0 - n1 === n2) res += "subtraction, "
-                else if (n0 * n1 === n2) res += "multiplication, "
-                else res += "division, "
-            }
+//Ejercicio Name: Middle me (7kyu)
+function middleMe(N, X, Y) {
+    let str = ""
+    /*     if (N % 2 != 0) return X
+        for (let i = 0; i <= N; i++) {
+            if (i == N / 2) str += X
+            else str += Y
         }
-        return res.trim().replace(/.$/, "")
+        return str*/
+    str = Y.repeat(N / 2)
+    return N % 2 != 0 ? X : str + X + str
+}
+console.log("middleMe");
+console.log(middleMe(19, 'z', '#'))
+console.log("---------------------")
 
-    },
-    //console.log(sayMeOperations("10 2 5 -3 -15 12"));
+function sumStrings(a, b) {
+    let res = []
+    let largo = a.length
 
-}// E N D
+    for (let i = 0; i < largo; i++) {
+        let sum;
+        sum = (Number(a[i]) + Number(b[i])).toString()
+        res.push(sum)
+    }
+    return res.join("")
+}
+console.log("sumStrings");
+console.log(sumStrings("123", "456"))
+console.log('-----------------------------');
 
+//Nombre Ej: Simple consecutive pairs (7kyu)
+function pairs(ar) {
+    let count = 0;
+    for (let i = 0; i < ar.length; i += 2) {
+        if (ar[i] + 1 == ar[i + 1] || ar[i] - 1 == ar[i + 1]) count++
+    }
+    return count
+};
+function pairs2(ar, count = 0) {
+    for (let i = 0; i < ar.length; i += 2) {
+        Math.abs(ar[i] - ar[i + 1]) == 1 ? count++ : count
+    }
+    return count
+}
+console.log("pairs");
+console.log(pairs([21, 20, 22, 40, 39, -56, 30, -55, 95, 94]))
+console.log('-----------------------------');
 
+//Ejercicio Name: Moving Zeros To The End (5kyu)
+const moveZeros = (arr) => {
+    /*    let res = arr.filter(e => e !== 0)
+       console.log(res);
+       let cero = arr.length - res.length
+       for (let i = 1; i <= cero; i++) {
+           res.push(0)
+       }
+       return res */
+    return arr.filter(e => e !== 0).concat(arr.filter(e => e === 0))
+}
+console.log("moveZeros");
+console.log(moveZeros([1, 2, 0, 1, false, true, 0, 1, 0, 3, 0, 1]));
+console.log('-----------------------------');
 
+function scramble(str1, str2) {
+    for (let i = 0; i < str2.length; i++) {
+        if (str1.includes(str2[i])) {
+            console.log(`letra ${str2[i]} si se encontro`);
+            str1 = str1.replace(str2[i], "")
+        } else {
+            console.log(`letra ${str2[i]} NO se encontro`);
+            return false
+        }
+    }
+    return true
+}
+console.log("scramble");
+console.log(scramble('javsaripts', 'javascript'));
+console.log('-----------------------------');
 
+//Ejercicio Nombre: Ranking System(6 kyu)
+function rankings(arr) {
+    console.log(arr)
+    let rank = [...arr].sort((a, b) => b - a)
+    return arr.map(e => e = rank.indexOf(e) + 1 + "°")
+}
+console.log("rankings");
+console.log(rankings([3, 4, 1, 2, 5]))
+console.log("------------------------");
 
+function rot13(str) {
+    console.log(str);
+    let alpma = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+    let alpmi = "abcdefghijklmnopqrstuvwxyz"
+    let cont = 0;
+    return [...str].map(e => {
+        if (/[A-Z]/.test(e)) {
+            if (alpma.indexOf(e) + 13 >= 26) {
+
+                cont = (alpma.indexOf(e) + 13) - 26
+                return e = alpma[cont]
+            } else return e = alpma[alpma.indexOf(e) + 13]
+        }
+        else if (/[a-z]/.test(e)) {
+            if (alpmi.indexOf(e) + 13 >= 26) {
+                cont = (alpmi.indexOf(e) + 13) - 26
+                return e = alpmi[cont]
+            } else return e = alpmi[alpmi.indexOf(e) + 13]
+        } else return e
+    }).join("")
+}
+console.log("rot13");
+console.log(rot13("EBG13 rknzcyr."));// "ROT13 example.";
+console.log("-----------------------");
+
+//Ejercicio Name: Where is my parent!? (6 kyu)
+function findChildren(dancingBrigade) {
+    let orden = [...dancingBrigade].sort()
+    let size = orden.length
+    let min = orden.filter(e => /[a-z]/.test(e))
+    min.map(e => {
+        let pos = orden.indexOf(e.toUpperCase())
+        orden.splice(pos + 1, 0, e)
+    })
+    orden.length = size
+    console.log(orden.length);
+    return orden.join("")
+
+};
+const findChildren2 = dancingBrigade =>
+    dancingBrigade
+        .split('')
+        .sort((a, b) => a.toLowerCase().localeCompare(b.toLowerCase()) || b.localeCompare(a))
+        .join('')
+console.log("findChildren");
+console.log(findChildren2("beeeEBb"));
+console.log("-------------------------------")
+
+//Ejercicio Name: Is he gonna survive? (8 kyu)
+const hero = (bullets, dragons) => {
+    return bullets / 2 >= dragons ? true : false
+}
+console.log("hero");
+console.log(hero(10, 5))
+console.log("------------------------")
+
+//Ejercicio Name: GCD sum (7 kyu)
+const solve = (sum, gcd) => {
+    if (sum % gcd !== 0) return -1
+    return [gcd, sum - gcd]
+}
+console.log("solve");
+console.log(solve(6, 3))
+console.log(solve(8, 2))
+console.log('-----------------------------');
+
+const solve2 = (str) => {
+    console.log(str)
+    let str2 = str.replace(/[A-z]/g, "-").split("-")
+    return Math.max(...str2)
+}
+console.log("Solve2");
+console.log(solve2("gh12cdy695m1"));
+console.log('-----------------------------');
+
+//Ejercicio Name: Say Me Please Operations (7 kyu)
+function sayMeOperations(str) {
+    console.log(str);
+    let str2 = str.split(" ").map(e => Number(e))
+    let res = "";
+    for (let i = 0; i < str2.length; i++) {
+        let n0 = str2[i],
+            n1 = str2[i + 1],
+            n2 = str2[i + 2]
+
+        if (n2 || n2 === 0) {
+            if (n0 + n1 === n2) res += "addition, "
+            else if (n0 - n1 === n2) res += "subtraction, "
+            else if (n0 * n1 === n2) res += "multiplication, "
+            else res += "division, "
+        }
+    }
+    return res.trim().replace(/.$/, "")
+
+}
+console.log("sayMeOperations");
+console.log(sayMeOperations("10 2 5 -3 -15 12"));
+//division, subtraction, multiplication, subtraction"
+console.log('-----------------------------');
 
 //Ejercicio Name: Regex validate PIN code(7 kyu)
 const validatePIN = (pin) => {

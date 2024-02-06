@@ -51,6 +51,31 @@ const binarySearch = (array, valueToSearch, time = 0) => {
     }
 }
 
+function conBinarySearch(arr, toSearch, count = 0) {
+    const start = performance.now();
+
+    let left = 0;
+    let right = arr.length - 1;
+    while (left <= right) {
+        count++
+        let mid = Math.floor((left + right) / 2);
+
+
+        if (arr[mid] === toSearch) break;
+        else if (arr[mid] < toSearch) {
+            // Si el valor en el punto medio es menor que el objetivo, busca en la mitad derecha
+            left = mid + 1;
+        } else {
+            // Si el valor en el punto medio es mayor que el objetivo, busca en la mitad izquierda
+            right = mid - 1;
+        }
+    }
+
+
+    const time = performance.now() - start
+    return `Se ejecutó >${count}< veces para encontrar el dato, tiempo final -> ${time}`
+}
+
 
 //BinarySearch to be used with trampoline
 const binarySearchNew = (array, valueToSearch, time = 0) => {

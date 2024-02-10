@@ -13,9 +13,19 @@ const exercises = {
 
             hash.set(element, i)
         }
-    }
+    },
+    removeElement(nums, val) {
+        //return nums.filter(num => num !== val).length
+        let i = 0;
+        while (i < nums.length) {
+            if (nums[i] === val) {
+                nums.splice(i, 1)
+            } else i++
+        }
+        return nums.length;
+    },
 
 }
 
 
-console.log(exercises.twoSum([2, 7, 11, 15], 9))
+console.log(exercises.removeElement([0, 1, 2, 2, 3, 0, 4, 2], 2))

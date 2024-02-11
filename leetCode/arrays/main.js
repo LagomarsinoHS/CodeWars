@@ -61,8 +61,40 @@ const exercises = {
             }
         }
         return left
+    },
+    countSubstrings(str) {
+        function isPalindrome(subStr) {
+            let left = 0
+            let right = subStr.length - 1;
+
+            while (left <= right) {
+                if (subStr[left] !== subStr[right]) {
+                    return false
+                }
+                left++
+                right--
+            }
+            return true
+        }
+
+        let count = 0;
+        for (let i = 0; i < str.length; i++) {
+            for (let j = str.length - 1; j >= i; j--) {
+
+
+                const word = str.slice(i, j + 1)
+                if (isPalindrome(word)) {
+                    count++
+                }
+            }
+
+        }
+        return count;
     }
 }
 
 
-console.log(exercises.searchInsertBinary([1, 3, 5, 6], 7))
+console.log(exercises.countSubstrings('abc'))
+
+
+

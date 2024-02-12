@@ -90,11 +90,31 @@ const exercises = {
 
         }
         return count;
+    },
+    plusOne(digits) {
+        let tmp = ''
+        for (let i = 0; i < digits.length; i++) {
+            tmp += `${digits[i]}`
+        }
+        const tmpToNumPlusOne = BigInt(tmp) + 1n
+
+        const result = []
+        const strNumber = String(tmpToNumPlusOne)
+        for (let i = 0; i < strNumber.length; i++) {
+            result.push(parseInt(strNumber[i]))
+        }
+
+        return result
+    },
+    plusOne2(digits) {
+        //[6, 1, 4, 5, 3, 9, 0, 1, 9, 5, 1, 8, 6, 7, 0, 5, 5, 4, 3]
+        const joinArr = digits.join("");
+        const arrPlus1 = BigInt(joinArr) + 1n;
+        return arrPlus1.toString().split("")
     }
 }
 
-
-console.log(exercises.countSubstrings('abc'))
+console.log(exercises.plusOne2([6, 1, 4, 5, 3, 9, 0, 1, 9, 5, 1, 8, 6, 7, 0, 5, 5, 4, 3]))
 
 
 

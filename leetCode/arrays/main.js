@@ -113,35 +113,26 @@ const exercises = {
         return arrPlus1.toString().split("")
     },
     majorityElement(nums) {
-        const countHash = new Map()
-        let left = 0;
-        let right = nums.length-1
-        const threshold = nums.length / 2
+        const countHash = new Map();
+        const threshold = nums.length / 2;
 
-        if (nums.length === 1) return nums[0];
+        let left = 0;
+        let right = nums.length - 1;
 
         while (left <= right) {
 
-            if (!countHash.has(nums[left])) {
-                countHash.set(nums[left], 0)
-            }
-            if (!countHash.has(nums[right])) {
-                countHash.set(nums[right], 0)
-            }
-
-            countHash.set(nums[right], countHash.get(nums[right]) + 1)
-            countHash.set(nums[left], countHash.get(nums[left]) + 1)
-
+            countHash.set(nums[left], (countHash.get(nums[left]) || 0) + 1);
             if (countHash.get(nums[left]) > threshold) return nums[left];
+
+            countHash.set(nums[right], (countHash.get(nums[right]) || 0) + 1);
             if (countHash.get(nums[right]) > threshold) return nums[right];
 
-            left++
-            right--
+            left++;
+            right--;
         }
-    },
+    }
+
 
 }
 
-console.log(exercises.majorityElement([6,5,5]))
-
-
+console.log(exercises.majorityElement([2, 2, 1, 1, 1, 2, 2]))

@@ -111,10 +111,37 @@ const exercises = {
         const joinArr = digits.join("");
         const arrPlus1 = BigInt(joinArr) + 1n;
         return arrPlus1.toString().split("")
-    }
+    },
+    majorityElement(nums) {
+        const countHash = new Map()
+        let left = 0;
+        let right = nums.length-1
+        const threshold = nums.length / 2
+
+        if (nums.length === 1) return nums[0];
+
+        while (left <= right) {
+
+            if (!countHash.has(nums[left])) {
+                countHash.set(nums[left], 0)
+            }
+            if (!countHash.has(nums[right])) {
+                countHash.set(nums[right], 0)
+            }
+
+            countHash.set(nums[right], countHash.get(nums[right]) + 1)
+            countHash.set(nums[left], countHash.get(nums[left]) + 1)
+
+            if (countHash.get(nums[left]) > threshold) return nums[left];
+            if (countHash.get(nums[right]) > threshold) return nums[right];
+
+            left++
+            right--
+        }
+    },
+
 }
 
-console.log(exercises.plusOne2([6, 1, 4, 5, 3, 9, 0, 1, 9, 5, 1, 8, 6, 7, 0, 5, 5, 4, 3]))
-
+console.log(exercises.majorityElement([6,5,5]))
 
 

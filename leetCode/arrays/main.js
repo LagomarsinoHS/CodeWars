@@ -1,3 +1,6 @@
+const getTicks = n => console.log("Ticks ->", n)
+const createArray = n => Array.from({ length: n }, (_) => Math.floor(Math.random() * 100) + 1)
+
 const exercises = {
     twoSum(nums, target) {
         //https://leetcode.com/problems/two-sum/description/
@@ -173,9 +176,100 @@ const exercises = {
             ans[i] = ans[i + nums.length] = nums[i];
         }
         return ans
-    }
+    },
+    buildArray(nums) {
+        //https://leetcode.com/problems/build-array-from-permutation/description/
+        /*  const ans = []
+         for (let i = 0; i < nums.length; i++) {
+             const numsElement = nums[i]
+             ans[i] = nums[numsElement]
+         }
+         return ans */
 
+        const ans = []
+        let left = 0
+        let right = nums.length - 1
+
+        while (left <= right) {
+            ans[left] = nums[nums[left]]
+            ans[right] = nums[nums[right]]
+
+            left++
+            right--
+        }
+        return ans
+    },
+    countPairs(nums, target) {
+        //https://leetcode.com/problems/count-pairs-whose-sum-is-less-than-target
+        let count = 0;
+        let ticks = 0
+        /*  
+         for (let i = 0; i < nums.length; i++) {
+ 
+             for (let j = i + 1; j < nums.length; j++) {
+                 ticks++
+                 if (i < j && (nums[i] + nums[j] < target)) count++
+             }
+         }
+         console.log("ticks", ticks)
+         return count */
+
+        let left = 0;
+        let right = nums.length - 1
+        nums.sort((a, b) => a - b) // Ordeno el array para poder hacer que funcione la matemática
+
+        while (left < right) {
+            ticks++
+            if (nums[left] + nums[right] < target) {
+                //Si este if se cumple, significa que todos los numeros que estén dentro de el rango, seran menor a target, por ende lo sumo a count
+                count += right - left // Este orden right siempre será el mayor ya que parte con el largo del array
+                left++
+            } else {
+                right--
+            }
+        }
+
+        console.log("Ticks ->", ticks)
+        return count
+    },
+    countNegatives(grid) {
+        //https://leetcode.com/problems/count-negative-numbers-in-a-sorted-matrix/
+        let ticks = 0;
+        let count = 0
+        for (const arr of grid) {
+            count += arr.filter(x => {
+                ticks++
+                return x > 0
+            }).length
+        }
+        getTicks(ticks)
+        return count
+    },
+    targetIndices(nums, target) {
+        let ticks = 0;
+        let ans = [];
+        nums.sort((a, b) => a - b);
+
+        let keep = true;
+        for (let i = 0; i < nums.length; i++) {
+            ticks++
+            if (nums[i] === target) {
+                ans.push(i);
+                keep = false;
+                continue;
+            }
+
+            if (!keep) break;
+        }
+        getTicks(ticks);
+        return ans;
+    },
 }
+console.log(exercises.targetIndices([1, 2, 5, 2, 3], 2))
 
-console.log(exercises.getConcatenation([1, 2, 3]))
+
+
+
+
+
 

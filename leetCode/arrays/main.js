@@ -1,5 +1,6 @@
 const exercises = {
     twoSum(nums, target) {
+        //https://leetcode.com/problems/two-sum/description/
         const hash = new Map()
 
         for (let i = 0; i <= nums.length - 1; i++) {
@@ -15,6 +16,7 @@ const exercises = {
         }
     },
     removeElement(nums, val) {
+        //https://leetcode.com/problems/remove-element/description/
         //return nums.filter(num => num !== val).length
         let i = 0;
         while (i < nums.length) {
@@ -25,6 +27,7 @@ const exercises = {
         return nums.length;
     },
     removeDuplicates(nums) {
+        //https://leetcode.com/problems/remove-duplicates-from-sorted-array/description/
         let idx = 1
         while (idx < nums.length) {
             if (nums[idx] === nums[idx - 1]) {
@@ -36,6 +39,7 @@ const exercises = {
         return nums.length
     },
     searchInsert(nums, target) {
+        //https://leetcode.com/problems/search-insert-position/description/
         const idxOf = nums.indexOf(target)
         if (idxOf === -1) {
             for (let i = 0; i < nums.length; i++) {
@@ -63,6 +67,7 @@ const exercises = {
         return left
     },
     countSubstrings(str) {
+        //https://leetcode.com/problems/palindromic-substrings/description/
         function isPalindrome(subStr) {
             let left = 0
             let right = subStr.length - 1;
@@ -92,6 +97,7 @@ const exercises = {
         return count;
     },
     plusOne(digits) {
+        //https://leetcode.com/problems/plus-one/description/
         let tmp = ''
         for (let i = 0; i < digits.length; i++) {
             tmp += `${digits[i]}`
@@ -113,6 +119,7 @@ const exercises = {
         return arrPlus1.toString().split("")
     },
     majorityElement(nums) {
+        //https://leetcode.com/problems/majority-element/description
         const countHash = new Map();
         const threshold = nums.length / 2;
 
@@ -130,9 +137,45 @@ const exercises = {
             left++;
             right--;
         }
-    }
+    },
+    firstPalindrome(words) {
+        //https://leetcode.com/problems/find-first-palindromic-string-in-the-array
+        function checkPalindrome(word) {
+            let left = 0;
+            let right = word.length - 1
 
+            while (left < right) {
+                if (word[left] !== word[right]) return false
+
+                left++
+                right--
+            }
+            return true
+        }
+        for (const word of words) {
+            if (checkPalindrome(word)) return word
+        }
+        return ''
+    },
+    getConcatenation(nums) {
+        //https://leetcode.com/problems/concatenation-of-array
+        const ans = [];
+
+        /*   for (let index = 0; index < 2; index++) {
+              nums.forEach(num => {
+                  ans.push(num)
+              });              
+          } */
+
+        for (let i = 0; i < nums.length; i++) {
+            //ans[i] = nums[i]
+            //ans[i + nums.length] = nums[i] 
+            ans[i] = ans[i + nums.length] = nums[i];
+        }
+        return ans
+    }
 
 }
 
-console.log(exercises.majorityElement([2, 2, 1, 1, 1, 2, 2]))
+console.log(exercises.getConcatenation([1, 2, 3]))
+

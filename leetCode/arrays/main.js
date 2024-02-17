@@ -264,8 +264,77 @@ const exercises = {
         getTicks(ticks);
         return ans;
     },
+    rearrangeArray(nums) {
+        //https://leetcode.com/problems/rearrange-array-elements-by-sign/
+        const positive = [];
+        const negative = [];
+
+        for (i = 0; i < nums.length; i++) {
+            if (nums[i] > 0) positive.push(nums[i])
+            else negative.push(nums[i])
+        }
+
+
+        let j = 0
+        for (let i = 0; i < nums.length; i += 2) {
+            nums[i] = positive[j]
+            nums[i + 1] = negative[j]
+            j++
+        }
+        return nums;
+    },
+    rearrangeArray2(nums) {
+        //https://leetcode.com/problems/rearrange-array-elements-by-sign/
+
+        const ans = [];
+
+        let posIdx = 0;
+        let negIdx = 1;
+
+        for (let i = 0; i < nums.length; i++) {
+            if (nums[i] > 0) {
+                ans[posIdx] = nums[i]
+                posIdx += 2;
+            } else {
+                ans[negIdx] = nums[i]
+                negIdx += 2;
+            }
+        }
+        return ans
+    },
+    findLeastNumOfUniqueInts(arr, k) {
+        // Create a map to store the frequency of each number
+        const frequencyMap = new Map();
+
+        // Populate the frequency map
+        arr.forEach(num => {
+            frequencyMap.set(num, (frequencyMap.get(num) || 0) + 1);
+        });
+
+        // Convert map entries to an array of [number, frequency] pairs and sort ASC by frequency
+        const sortedFreqArray = Array.from(frequencyMap.entries()).sort((a, b) => a[1] - b[1]);
+
+
+        // Initialize unique count
+        let uniqueCount = sortedFreqArray.length;
+
+        // Iterate through the sorted frequency array
+        for (const [num, frequency] of sortedFreqArray) {
+            if (k >= frequency) {
+                // If k is greater than or equal to the frequency of the current number,
+                // decrement k by the frequency and decrement the unique count
+                k -= frequency;
+                uniqueCount--;
+            } else {
+                // If k is less than the frequency of the current number, break the loop
+                break;
+            }
+        }
+
+        return uniqueCount;
+    }
 }
-console.log(exercises.targetIndices([1, 2, 5, 2, 3], 2))
+console.log(exercises.findLeastNumOfUniqueInts([4, 3, 1, 1, 3, 3, 2], 3))
 
 
 

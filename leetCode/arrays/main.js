@@ -332,9 +332,49 @@ const exercises = {
         }
 
         return uniqueCount;
+    },
+    numIdenticalPairs(nums) {
+        //https://leetcode.com/problems/number-of-good-pairs/
+
+        let ans = 0;
+        for (let i = 0; i <= nums.length; i++) {
+            const numI = nums[i]
+            for (let j = i + 1; j <= nums.length; j++) {
+                const numJ = nums[j]
+
+                if (numI === numJ && i < j) ans++
+            }
+        }
+        return ans
+    },
+    finalValueAfterOperations(operations) {
+        //https://leetcode.com/problems/final-value-of-variable-after-performing-operations/
+        let ans = 0;
+        let left = 0
+        let right = operations.length - 1
+
+        const processOpe = ope => {
+            if (ope == '--X' || ope == 'X--') ans--
+            if (ope == '++X' || ope == 'X++') ans++
+
+        }
+        while (left < right) {
+            let lOpe = operations[left];
+            let rOpe = operations[right]
+            processOpe(lOpe)
+            processOpe(rOpe)
+
+            left++
+            right--
+        }
+        if (left === right) {
+            processOpe(operations[left]);
+        }
+        return ans
+
     }
 }
-console.log(exercises.findLeastNumOfUniqueInts([4, 3, 1, 1, 3, 3, 2], 3))
+console.log(exercises.finalValueAfterOperations(["--X", "X++", "X++"]))
 
 
 

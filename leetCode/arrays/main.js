@@ -372,13 +372,122 @@ const exercises = {
         }
         return ans
 
+    },
+    shuffle(nums, n) {
+        //https://leetcode.com/problems/shuffle-the-array/
+        let shuffledArray = [];
+
+        for (let i = 0; i < n; i++) {
+            shuffledArray.push(nums[i], nums[i + n]);
+        }
+
+        return shuffledArray;
+    },
+    finalPrices(prices) {
+        //https://leetcode.com/problems/final-prices-with-a-special-discount-in-a-shop
+        /*        let ans = []
+               for (let i = 0; i < prices.length; i++) {
+                   let newValue = prices[i]
+                   for (let j = i + 1; j < prices.length; j++) {
+       
+                       if (prices[j] <= prices[i]) {
+                           newValue = newValue - prices[j]
+                           break;
+                       }
+                   }
+                   ans.push(newValue)
+               }
+               return ans */
+        const stackOfIndexes = [];
+        const ans = new Array(prices.length);
+        for (let i = 0; i < prices.length; i++) {
+
+            while (stackOfIndexes.length > 0 && prices[stackOfIndexes[stackOfIndexes.length - 1]] >= prices[i]) {
+                const idx = stackOfIndexes.pop()
+                ans[idx] = prices[idx] - prices[i]
+            }
+            stackOfIndexes.push(i)
+        }
+
+        for (let i = 0; i < stackOfIndexes.length; i++) {
+            const idx = stackOfIndexes[i]
+            ans[idx] = prices[idx]
+        }
+
+        return ans
+    },
+    runningSum(nums) {
+        //https://leetcode.com/problems/running-sum-of-1d-array/
+        let ans = []
+        let total = 0
+        for (const idx in nums) {
+            total += nums[idx]
+            ans.push(total)
+        }
+        return ans
+    },
+    average(salaries) {
+        //https://leetcode.com/problems/average-salary-excluding-the-minimum-and-maximum-salary/
+
+        let min = Infinity
+        let max = -Infinity
+        let sum = 0
+        for (const salary of salaries) {
+            sum += salary;
+            min = Math.min(min, salary);
+            max = Math.max(max, salary);
+        }
+        sum -= min + max;
+
+        return sum / (salaries.length - 2)
+    },
+    findWordsContaining(words, x) {
+        //https://leetcode.com/problems/find-words-containing-character/
+        let ans = []
+
+        for (let i = 0; i < words.length; i++) {
+            if (words[i].includes(x)) {
+                ans.push(i)
+            }
+        }
+        return ans
+    },
+    maximumWealth(accounts) {
+        //https://leetcode.com/problems/richest-customer-wealth/
+
+        //BruteForce
+        /*        let sum = 0
+               for (let i = 0; i < accounts.length; i++) {
+       
+                   const sumIterateed = accounts[i].reduce((acc, ele) => acc + ele, 0)
+                   sum = Math.max(sumIterateed, sum)
+               }
+               return sum
+        */
+
+        //Doble Pointer
+        let sum = 0
+        for (let i = 0; i < accounts.length; i++) {
+            let parcial = 0
+            let left = 0
+            let right = accounts[i].length - 1
+
+            while (left <= right) {
+                parcial += accounts[i][left]
+
+                if (left !== right) {
+                    parcial += accounts[i][right]
+                }
+                left++
+                right--
+                sum = Math.max(sum, parcial)
+            }
+        }
+        return sum
     }
 }
-console.log(exercises.finalValueAfterOperations(["--X", "X++", "X++"]))
 
-
-
-
+console.log(exercises.maximumWealth([[2, 8, 7], [7, 1, 3], [1, 9, 5]]))// 17
 
 
 

@@ -484,10 +484,96 @@ const exercises = {
             }
         }
         return sum
+    },
+    missingNumber(nums) {
+        //https://leetcode.com/problems/missing-number
+        /*
+                nums.sort((a, b) => a - b)
+                for (let i = 0; i <= nums.length - 1; i++) {
+                    if (nums[i] !== i) return i
+                }
+                return nums.length
+                */
+        const numSet = new Set(nums)
+        for (let i = 0; i < nums.length; i++) {
+            if (!numSet.has(i)) return i
+        }
+        return nums.length;
+    },
+    isPalindrome(x) {
+        //https://leetcode.com/problems/palindrome-number/
+        /*
+        const xToStr = x.toString()
+        let left = 0
+        let right = xToStr.length - 1
+
+        while (left <= right) {
+            if (xToStr[left] !== xToStr[right]) {
+                return false
+            }
+            left++
+            right--
+        }
+        return true
+        */
+        x = x.toString()
+        let mid = x.length / 2 + 1
+        for (let index = 0; index < mid; index++) {
+            left = x[index]
+            right = x[x.length - index - 1]
+            if (left != right) {
+                return false
+            }
+        }
+
+        return true
+    },
+    romanToInt(string) {
+        const romanDict = { I: 1, V: 5, X: 10, L: 50, C: 100, D: 500, M: 1000 }
+
+        let ans = 0
+        /*         for (let i = 0; i <= string.length - 1; i++) {
+        
+                    if (string[i] === 'I' && string[i + 1] === 'V') {
+                        ans += 4
+                        i++
+                    } else if (string[i] === 'I' && string[i + 1] === 'X') {
+                        ans += 9
+                        i++
+                    } else if (string[i] === 'X' && string[i + 1] === 'L') {
+                        ans += 40
+                        i++
+                    } else if (string[i] === 'X' && string[i + 1] === 'C') {
+                        ans += 90
+                        i++
+                    } else if (string[i] === 'C' && string[i + 1] === 'D') {
+                        ans += 400
+                        i++
+                    } else if (string[i] === 'C' && string[i + 1] === 'M') {
+                        ans += 900
+                        i++
+                    } else ans += romanDict[string[i]]
+                } */
+
+        for (let i = 0; i < string.length; i++) {
+            let current = string[i]
+            let prox = string[i + 1]
+
+            if (romanDict[current] < romanDict[prox]) {
+                ans += romanDict[prox] - romanDict[current]
+                i++
+            } else {
+                ans += romanDict[current]
+            }
+
+        }
+        return ans
     }
+
+
 }
 
-console.log(exercises.maximumWealth([[2, 8, 7], [7, 1, 3], [1, 9, 5]]))// 17
+console.log(exercises.romanToInt('MCMXCIV')) // 1994
 
 
 

@@ -291,12 +291,12 @@ const exercises = {
         let posIdx = 0;
         let negIdx = 1;
 
-        for (let i = 0; i < nums.length; i++) {
-            if (nums[i] > 0) {
-                ans[posIdx] = nums[i]
+        for (const element of nums) {
+            if (element > 0) {
+                ans[posIdx] = element
                 posIdx += 2;
             } else {
-                ans[negIdx] = nums[i]
+                ans[negIdx] = element
                 negIdx += 2;
             }
         }
@@ -319,7 +319,7 @@ const exercises = {
         let uniqueCount = sortedFreqArray.length;
 
         // Iterate through the sorted frequency array
-        for (const [num, frequency] of sortedFreqArray) {
+        for (const [, frequency] of sortedFreqArray) {
             if (k >= frequency) {
                 // If k is greater than or equal to the frequency of the current number,
                 // decrement k by the frequency and decrement the unique count
@@ -568,12 +568,23 @@ const exercises = {
 
         }
         return ans
-    }
+    },
+    longestCommonPrefix(strs) {
+        //https://leetcode.com/problems/longest-common-prefix/
+        let [prefix, ...words] = strs
 
-
+        let i = 0;
+        while (i < words.length) {
+            if (!words[1].startsWith(prefix)) {
+                prefix = prefix.slice(0, -1)
+            } else {
+                i++
+            }
+        }
+        return prefix
+    },
 }
 
-console.log(exercises.romanToInt('MCMXCIV')) // 1994
 
 
 

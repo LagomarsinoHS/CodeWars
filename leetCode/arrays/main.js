@@ -585,6 +585,9 @@ const exercises = {
     },
 }
 
+const res = exercises.countAndSay(2)
+console.log(res)
+
 
 
 

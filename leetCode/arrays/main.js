@@ -583,9 +583,59 @@ const exercises = {
         }
         return prefix
     },
+    groupThePeople(groupSizes) {
+        //https://leetcode.com/problems/group-the-people-given-the-group-size-they-belong-to/
+        let hashMap = new Map()
+        let ans = []
+        /*         for (const i in groupSizes) {
+                    const num = groupSizes[i];
+        
+                    if (hashMap.has(num)) {
+                        let { count, ids } = hashMap.get(num)
+                        hashMap.set(num, { count: ++count, ids: [...ids, i] })
+                    } else {
+                        hashMap.set(num, { count: 1, ids: [i] })
+                    }
+                }
+                hashMap.forEach(({ count, ids }, key) => {
+                    let i = 0
+                    while (count >= key) {
+                        let parcial = ids.slice(i, key + i)
+                        count -= key
+                        i += key
+                        ans.push(parcial)
+                    }
+                })
+                return ans */
+
+        for (let i = 0; i <= groupSizes.length - 1; i++) {
+            const size = groupSizes[i]
+            if (!hashMap.has(size)) hashMap.set(size, [])
+            hashMap.get(size).push(i)
+
+            if (hashMap.get(size).length === size) {
+                ans.push(hashMap.get(size))
+                hashMap.set(size, [])
+            }
+        }
+        return ans
+    },
+    smallerNumbersThanCurrent(nums) {
+        //https://leetcode.com/problems/how-many-numbers-are-smaller-than-the-current-number/
+        let ans = []
+        for (const i in nums) {
+            let count = 0;
+            for (const j in nums) {
+                if (i === j) continue
+                if (nums[j] < nums[i]) count++
+            }
+            ans.push(count)
+        }
+        return ans
+    }
 }
 
-const res = exercises.countAndSay(2)
+const res = exercises.smallerNumbersThanCurrent([8, 1, 2, 2, 3]) // [[5],[0,1,2],[3,4,6]]
 console.log(res)
 
 

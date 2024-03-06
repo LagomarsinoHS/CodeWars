@@ -107,8 +107,9 @@ const exercises = {
             if (res === 0) ans++
         }
         return ans
-    }
+    },
+
 }
 
 
-console.log(exercises.balancedStringSplit('RLRRLLRLRL'))
+console.log(exercises.arrayStringsAreEqual('RLRRLLRLRL'))

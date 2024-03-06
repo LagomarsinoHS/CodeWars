@@ -632,12 +632,58 @@ const exercises = {
             ans.push(count)
         }
         return ans
+    },
+    findSubstring(s, words) {
+        //https://leetcode.com/problems/substring-with-concatenation-of-all-words/description/
+        const possibilties = []
+
+        for (let i = 0; i < words.length; i++) {
+            let word = words[i]
+            let count = 0
+            for (let j = 0; j < words.length; j++) {
+                if (i === j) continue;
+                count++
+
+                word += words[j]
+                if (count === words.length - 1) {
+                    possibilties.push(word)
+                    count = 0
+                }
+            }
+        }
+
+        let ans = []
+        console.log(possibilties);
+        possibilties.forEach(word => {
+            const idx = s.indexOf(word)
+            if (idx !== -1) {
+                ans.push(idx)
+            }
+        })
+        return ans
+    },
+    arrayStringsAreEqual(word1, word2) {
+        //https://leetcode.com/problems/check-if-two-string-arrays-are-equivalent/
+        const allW1 = word1.join("");
+        const allW2 = word2.join("");
+
+        return allW1 === allW2;
+    },
+    countMatches(items, ruleKey, ruleValue) {
+        //https://leetcode.com/problems/count-items-matching-a-rule/description/
+
+        const keyMap = {
+            type: 0,
+            color: 1,
+            name: 2
+        }
+        return items.reduce((count, item) => {
+            if(item[keyMap[ruleKey]]===ruleValue)count++
+            return count;
+        }, 0)
     }
+
 }
 
-const res = exercises.smallerNumbersThanCurrent([8, 1, 2, 2, 3]) // [[5],[0,1,2],[3,4,6]]
+const res = exercises.countMatches([["phone", "blue", "pixel"], ["computer", "silver", "phone"], ["phone", "gold", "iphone"]], "type", "phone")
 console.log(res)
-
-
-
-

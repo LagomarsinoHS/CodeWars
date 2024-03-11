@@ -678,12 +678,52 @@ const exercises = {
             name: 2
         }
         return items.reduce((count, item) => {
-            if(item[keyMap[ruleKey]]===ruleValue)count++
+            if (item[keyMap[ruleKey]] === ruleValue) count++
             return count;
         }, 0)
-    }
+    },
+    maxFrequencyElements(nums) {
+        //https://leetcode.com/problems/count-elements-with-maximum-frequency
 
+        const trackFrequency = {}
+        let maxFreq = 0
+        for (const num of nums) {
+            trackFrequency[num] = (trackFrequency[num] || 0) + 1
+            maxFreq = Math.max(maxFreq, trackFrequency[num])
+        }
+
+        let ans = 0
+        for (const key in trackFrequency) {
+            if (trackFrequency[key] === maxFreq) ans += trackFrequency[key]
+        }
+        return ans;
+    },
+    groupAnagrams(strs) {
+        let ans = [[strs[0]]]
+
+        for (let i = 1; i < strs.length; i++) {
+
+            console.log("ia", includeAll(strs[i]))
+            const idx = includeAll(strs[i])
+            if (!idx) {
+                ans.push([strs[i]])
+            } else {
+                ans[idx].push(strs[i])
+            }
+
+        }
+        return ans
+
+        function includeAll(word) {
+            for (const idx in ans) {
+                const arr = ans[idx][0]
+                if ([...word].every(w => arr.includes(w)) && word.length ===arr.length) {
+                    return idx;
+                }
+            }
+            return null
+        }
+    }
 }
 
-const res = exercises.countMatches([["phone", "blue", "pixel"], ["computer", "silver", "phone"], ["phone", "gold", "iphone"]], "type", "phone")
-console.log(res)
+console.log(exercises.groupAnagrams(["ab","b"]))

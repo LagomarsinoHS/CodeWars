@@ -108,8 +108,57 @@ const exercises = {
         }
         return ans
     },
+    lengthOfLongestSubstring(string) {
+        //https://leetcode.com/problems/longest-substring-without-repeating-characters/
 
+        let word = '';
+        let max = 0;
+
+        for (let i = 0; i < string.length; i++) {
+            let countMap = { [string[i]]: true };
+
+            word += string[i];
+
+            for (let j = i + 1; j < string.length; j++) {
+                if (countMap[string[j]]) break;
+
+                countMap[string[j]] = true;
+                word += string[j];
+
+                if (max > string.slice(j)) break;
+            }
+            max = Math.max(max, word.length)
+            word = '';
+
+            if (max > string.slice(i)) break;
+        }
+        return max;
+    },
+    decodeMessage(key, message) {
+        const alphabeth = {
+            0: 'a', 1: 'b', 2: 'c', 3: 'd', 4: 'e', 5: 'f', 6: 'g', 7: 'h', 8: 'i', 9: 'j',
+            10: 'k', 11: 'l', 12: 'm', 13: 'n', 14: 'o', 15: 'p', 16: 'q', 17: 'r', 18: 's', 19: 't',
+            20: 'u', 21: 'v', 22: 'w', 23: 'x', 24: 'y', 25: 'z'
+        };
+
+        const dict = {}
+        let idx = 0
+        for (const char of key) {
+            if (char === ' ') continue;
+            if (!dict[char]) {
+                dict[char] = alphabeth[idx]
+                idx++
+            }
+        }
+
+        let ans = '';
+        for (const char of message) {
+            ans += dict[char] ?? ' '
+        }
+        return ans;
+    }
 }
 
 
-console.log(exercises.arrayStringsAreEqual('RLRRLLRLRL'))
+console.log(exercises.decodeMessage("the quick brown fox jumps over the lazy dog", "vkbs bs t suepuv"))
+console.log(exercises.decodeMessage("eljuxhpwnyrdgtqkviszcfmabo", "zwx hnfx lqantp mnoeius ycgk vcnjrdb"))

@@ -41,7 +41,7 @@ const exercises = {
             for (let letra of letras) {
                 for (let combinacion of combinaciones) {
                     // Concatenamos la letra actual a cada combinación existente
-                    let value= combinacion + letra;
+                    let value = combinacion + letra;
                     nuevasCombinaciones.push(value);
                 }
             }
@@ -52,10 +52,9 @@ const exercises = {
 
         return combinaciones;
 
-    }
+    },
+    
 }
 
 
-console.log(exercises.isPowerOfTwo(1))
-console.log(exercises.isPowerOfTwo(16))
-console.log(exercises.isPowerOfTwo(3))
+console.log(exercises.numSubarraysWithSum([1, 0, 1, 0, 1]))

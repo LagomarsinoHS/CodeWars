@@ -717,13 +717,56 @@ const exercises = {
         function includeAll(word) {
             for (const idx in ans) {
                 const arr = ans[idx][0]
-                if ([...word].every(w => arr.includes(w)) && word.length ===arr.length) {
+                if ([...word].every(w => arr.includes(w)) && word.length === arr.length) {
                     return idx;
                 }
             }
             return null
         }
+    },
+    numSubarraysWithSum(nums, goal) {
+        //https://leetcode.com/problems/binary-subarrays-with-sum
+        let count = new Map();
+        count.set(0, 1);
+        let currSum = 0;
+        let totalSubarrays = 0;
+
+        for (let num of nums) {
+            currSum += num;
+            const haveIt = count.has(currSum - goal)
+            if (haveIt) {
+                totalSubarrays += count.get(currSum - goal);
+            }
+            count.set(currSum, (count.get(currSum) || 0) + 1);
+        }
+
+        return totalSubarrays;
+    },
+    singleNumber(nums) {
+        //https://leetcode.com/problems/single-number/
+        let countMap = new Map()
+        for (const num of nums) {
+            countMap.set(num, (countMap.get(num) || 0) + 1)
+        }
+
+        for (const [key, value] of countMap) {
+            if (value === 1) return key
+        }
+    },
+    containsDuplicate(nums) {
+        //https://leetcode.com/problems/contains-duplicate/
+        const countMap = new Map()
+        for (const num of nums) {
+            countMap.set(num, (countMap.get(num) || 0) + 1);
+        }
+
+        console.log(countMap)
+        for (const [, value] of countMap) {
+            if (value >= 2) return true;
+        }
+        return false;
     }
 }
 
-console.log(exercises.groupAnagrams(["ab","b"]))
+console.log(exercises.containsDuplicate([1, 1, 1, 3, 3, 4, 3, 2, 4, 2]))
+console.log(exercises.containsDuplicate([1,2,3,4]))

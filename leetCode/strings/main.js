@@ -156,9 +156,35 @@ const exercises = {
             ans += dict[char] ?? ' '
         }
         return ans;
+    },
+    sortSentence(s) {
+        //https://leetcode.com/problems/sorting-the-sentence/
+        /*         const hash = {}
+        
+                const splitSentence = s.split(" ")
+                for (const word of splitSentence) {
+                    const justWord = word.slice(0, -1)
+                    const number = word.at(-1)
+                    hash[number] = justWord
+                }
+        
+                let ans = ""
+                for (let i = 1; i <= splitSentence.length; i++) {
+                    ans +=hash["" + i]+" "
+                }
+                return ans; */
+        const splittedS = s.split(" ")
+        let tmp = []
+        for (let i = 0; i < splittedS.length; i++) {
+            const index = Number(splittedS[i].at(-1) - 1);
+            const word = splittedS[i].slice(0, -1);
+            tmp[index] = word;
+        }
+
+        return tmp.join(" ")
     }
 }
 
 
-console.log(exercises.decodeMessage("the quick brown fox jumps over the lazy dog", "vkbs bs t suepuv"))
-console.log(exercises.decodeMessage("eljuxhpwnyrdgtqkviszcfmabo", "zwx hnfx lqantp mnoeius ycgk vcnjrdb"))
+console.log(exercises.sortSentence("is2 sentence4 This1 a3"))
+

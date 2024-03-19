@@ -765,8 +765,36 @@ const exercises = {
             if (value >= 2) return true;
         }
         return false;
+    },
+    numberGame(nums) {
+        //https://leetcode.com/problems/minimum-number-game/
+        const ans = []
+
+        while (nums.length > 0) {
+            const min = Math.min(...nums)
+            const idx = nums.indexOf(min)
+            nums.splice(idx, 1)
+            const min2 = Math.min(...nums)
+            const idx2 = nums.indexOf(min2)
+            nums.splice(idx2, 1)
+            ans.push(min2, min)
+        }
+
+        return ans;
+    },
+    maxProductDifference(nums) {
+        //https://leetcode.com/problems/maximum-product-difference-between-two-pairs/
+        nums.sort((a, b) => b - a)
+
+        return (nums[0] * nums[1]) - (nums.at(-1) * nums.at(-2))
+    },
+    maxProduct(nums) {
+        //https://leetcode.com/problems/maximum-product-of-two-elements-in-an-array/
+        nums.sort((a, b) => b - a)
+        return (nums[0] - 1) * (nums[1] - 1)
     }
 }
 
-console.log(exercises.containsDuplicate([1, 1, 1, 3, 3, 4, 3, 2, 4, 2]))
-console.log(exercises.containsDuplicate([1,2,3,4]))
+console.log(exercises.numberGame([4, 4, 3, 8]))
+
+

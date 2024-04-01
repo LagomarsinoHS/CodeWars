@@ -653,7 +653,6 @@ const exercises = {
         }
 
         let ans = []
-        console.log(possibilties);
         possibilties.forEach(word => {
             const idx = s.indexOf(word)
             if (idx !== -1) {
@@ -796,5 +795,3 @@ const exercises = {
 }
 
 console.log(exercises.numberGame([4, 4, 3, 8]))
-
-

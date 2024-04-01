@@ -182,9 +182,41 @@ const exercises = {
         }
 
         return tmp.join(" ")
-    }
+    },
+    longestPalindrome(s) {
+        const isPalindrome = str => {
+            str = str.toLowerCase()
+            let left = 0
+            let right = str.length - 1;
+
+            while (left <= right) {
+                if (str[left] !== str[right]) {
+                    return false
+                }
+                left++
+                right--
+            }
+            return true
+        }
+
+        let word = s[0]
+        let len = ''
+        for (let i = 0; i < s.length; i++) {
+            let substr = s[i]
+            for (let j = i + 1; j < s.length; j++) {
+                substr += s[j]
+                if (isPalindrome(substr) && substr.length > len) {
+                    word = substr;
+                    len = substr.length;
+                }
+            }
+        }
+        return word;
+    },
+
 }
 
 
-console.log(exercises.sortSentence("is2 sentence4 This1 a3"))
+console.log(exercises.longestPalindrome("babad"))
+
 

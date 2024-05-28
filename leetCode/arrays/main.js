@@ -791,7 +791,25 @@ const exercises = {
         //https://leetcode.com/problems/maximum-product-of-two-elements-in-an-array/
         nums.sort((a, b) => b - a)
         return (nums[0] - 1) * (nums[1] - 1)
-    }
+    },
+    timeRequiredToBuy(tickets, k) {
+        //https://leetcode.com/problems/time-needed-to-buy-tickets/
+
+        let count = 0;
+        let i = 0
+        while (tickets[k] > 0) {
+            if (tickets[i] === 0) {
+                i++
+                continue
+            };
+            tickets[i]--
+            i++
+
+            if (i === tickets.length && tickets[k] > 0) i = 0;
+            count++
+        }
+        return count;
+    },
 }
 
-console.log(exercises.numberGame([4, 4, 3, 8]))
+console.log(exercises)

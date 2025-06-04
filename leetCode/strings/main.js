@@ -213,10 +213,26 @@ const exercises = {
         }
         return word;
     },
+    countAndSay(string) {
+        let result = "";
 
+        const count = new Map()
+        for (let i = 0; i < string.length; i++) {
+            const element = string[i];
+
+            count.set(element, (count.get(element) || 0) + 1)
+
+
+            if (string[i + 1] !== element) {
+                result += `${count.get(element)}${element}`
+                count.clear()
+            }
+        }
+        return result;
+    }
 }
 
 
-console.log(exercises.longestPalindrome("babad"))
+console.log("->", exercises.countAndSay("112211"))
 
 

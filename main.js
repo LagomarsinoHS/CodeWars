@@ -2437,8 +2437,44 @@ const codeWars = {
 
     // If not enough chairs have been found, return "Not enough!"
     return totalChairs >= need ? result : "Not enough!";
+  },
+
+  // Find the smallest integer in the array (8 Kyu)
+  findSmallestInt(arr) {
+    return arr.reduce((acc, ele) => {
+      return ele < acc ? ele : acc
+    }, arr[0])
+  },
+
+  // Grasshopper - Terminal game combat function (8 Kyu)
+  combat(health, damage) {
+    const restHp = health - damage
+    return restHp >= 0 ? restHp : 'Health cannot go below 0'
+  },
+
+  // Simple Fun #384: Is Turing's Equation? (7 Kyu)
+  isTuringEquation(str) {
+    const reverseNum = num => Number(num.split("").reverse().join(""))
+    const [first, second, total] = str.match(/\d+/g).map(reverseNum)
+
+    return first + second === total
+  },
+
+  //Duck Duck Goose (8 Kyu)
+  duckDuckGoose(players, goose) {
+    let position = 0;
+    const len = players.length
+    while (goose > 1) {
+      position++
+      if (position >= len) position = 0
+      goose--
+    }
+
+    return players[position]
   }
+
+
+
 }// E N D
 
-console.log(codeWars.meeting2([['XXX', 1], ['XXXXXX', 6], ['X', 2], ['XXXXXX', 8], ['X', 3], ['XXX', 1]], 5))
-//[ +0, +0, 1, 2, 2 ]
+console.log(codeWars.duckDuckGoose(["a", "b", "c", "d"], 7))

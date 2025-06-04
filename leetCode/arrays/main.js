@@ -810,6 +810,73 @@ const exercises = {
         }
         return count;
     },
+    vowelStrings(words, queries) {
+        // SLOW ONE
+        //https://leetcode.com/problems/count-vowel-strings-in-ranges/description/
+
+        const isValid = word => /^[aeiou]$|^[aeiou].*[aeiou]$/.test(word)
+        const res = [];
+        queries.forEach(([from, to]) => {
+            console.log(from, to)
+            let count = 0;
+            for (let i = from; i < words.length; i++) {
+                if (i > to) break;
+                const element = words[i];
+                console.log(element, isValid(element))
+                count += isValid(element) ? 1 : 0;
+                console.log("COUNT", count)
+            }
+            res.push(count)
+            console.log('-----------------------------');
+        });
+
+        return res
+    },
+    vowelStrings2(words, queries) {
+        // FAST ONE
+        //https://leetcode.com/problems/count-vowel-strings-in-ranges/description/
+
+        const prefix = Array.from({ length: words.length + 1 }, () => 0)
+
+        for (let i = 0; i < words.length; i++) {
+            const word = words[i];
+            prefix[i + 1] = /^[aeiou]$|^[aeiou].*[aeiou]$/.test(word) ? prefix[i] + 1 : prefix[i]
+        }
+
+        const res = []
+        queries.forEach(([from, to]) => {
+            res.push(prefix[to + 1] - prefix[from])
+        })
+
+        return res;
+    },
+    waysToSplitArray(nums) {
+        //https://leetcode.com/problems/number-of-ways-to-split-array/description
+
+        const sums = (arr) => {
+            //console.log(arr)
+            return arr.reduce((acc, ele) => acc + ele, 0)
+        }
+        let count = 0;
+        for (let i = 0; i < nums.length; i++) {
+            const left = sums([...nums].slice(0, i + 1))
+            const right = sums([...nums].slice(i + 1))
+
+            const rightOfI = [...nums].slice(i+1)
+            console.log({ left,right,rightOfI })
+
+            if(left >= right  ){
+                count++
+            }
+        }
+        return count
+
+    }
+
+    /*
+The sum of the first i + 1 elements is greater than or equal to the sum of the last n - i - 1 elements.
+There is at least one element to the right of i. That is, 0 <= i < n - 1.
+    */
 }
 
-console.log(exercises)
+console.log(exercises.waysToSplitArray([10, 4, -8, 7])) //2

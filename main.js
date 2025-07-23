@@ -2471,10 +2471,111 @@ const codeWars = {
     }
 
     return players[position]
-  }
+  },
 
+
+  //FIRE and FURY (6 Kyu)
+  fireAndFury(tweet) {
+    let matches = tweet.match(/(FURY|FIRE)/g);
+
+    if (/[^EFIRUY]/.test(tweet) || !matches) {
+      return 'Fake tweet.';
+    }
+
+    const helper = (word, count) => {
+      let phrase;
+      if (word === 'FURY') {
+        phrase = count < 2 ? 'I am furious.' : `I am ${"really ".repeat(count - 1)} furious.`
+      } else {
+        phrase = count < 2 ? 'You are fired!' : `You ${"and you ".repeat(count - 1)} are fired!`
+      }
+
+      return phrase;
+    }
+
+
+    let result = '';
+    while (matches.length > 0) {
+      let count = 1
+      const thisWord = matches.shift()
+
+      while (thisWord === matches[0]) {
+        matches.shift()
+        count++
+      }
+      result += " " + helper(thisWord, count)
+    }
+
+    return result.trim();
+  },
+
+  //Advanced Pig Latin (5 Kyu)
+  pigLatin(sentence) {
+    const transformWord = word => {
+      const isNumber = word => /\d/.test(word)
+      const haveVowels = word => /[aeiou]/i.test(word)
+      const isFirstVowel = word => /[aeiou]/i.test(word[0])
+      const camelCase = word => /[A-Z]/.test(word) ? word[0].toUpperCase() + word.substring(1).toLowerCase() : word
+      const sanitizeWord = word => camelCase(word.replace(/([a-zA-Z]+)([.,!?:;]+)([a-zA-Z]+)/, '$1$3$2'));
+      const indexOfVowel = word => {
+        let position;
+        for (let i = 0; i < word.length; i++) {
+          const element = word[i];
+          if (/[aeiou]/i.test(element)) {
+            position = i; break;
+          }
+        }
+        return position;
+      }
+
+      if (isNumber(word)) return word
+      if (isFirstVowel(word)) return sanitizeWord(`${word}way`)
+      if (!haveVowels(word)) return sanitizeWord(`${word}ay`)
+
+      const idxVowal = indexOfVowel(word)
+      const wordFixed = word.substring(idxVowal, word.length) + word.substring(0, idxVowal)
+      return sanitizeWord(wordFixed + 'ay')
+
+    }
+    return sentence.split(" ").map(transformWord).join(" ");
+  },
+
+  //Square Every Digit (7 Kyu)
+  squareDigits(num) {
+    return num
+      .toString()
+      .split("")
+      .reduce((res, n) => res += Math.pow(+n, 2), "")
+  },
+
+  //Squad number generator (7 Kyu)
+  generateNumber(squad, n) {
+    if (!squad.includes(n)) return n;
+
+    let possible = [];
+
+    for (let i = 1; i <= 9; i++) {
+      for (let j = 1; j <= 9; j++) {
+        if (i + j === n) {
+          let candidate = parseInt(`${i}${j}`);
+          if (!squad.includes(candidate)) {
+            possible.push(candidate);
+          }
+        }
+      }
+    }
+
+
+    return possible.length === 0
+      ? null
+      : Math.min(...possible)
+  }
 
 
 }// E N D
 
-console.log(codeWars.duckDuckGoose(["a", "b", "c", "d"], 7))
+console.log(codeWars.generateNumber([1, 2, 3, 4, 6, 9, 10, 11, 15, 69], 11))
+
+
+
+

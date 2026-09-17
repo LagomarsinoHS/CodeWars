@@ -1,3 +1,3 @@
-import { generateNumber } from './7kyu/generateNumber.js'
+import { digits } from './7kyu/digits.js'
 
-console.log(generateNumber([1, 2, 3, 4, 6, 9, 10, 11, 15, 69], 11))
+console.log(digits(12345))
